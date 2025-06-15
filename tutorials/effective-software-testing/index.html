@@ -1,204 +1,1572 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Effective Software Testing - phautelman</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Effective Software Testing";
-        var mkdocs_page_input_path = "tutorials/effective-software-testing.md";
-        var mkdocs_page_url = null;
-      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../open-webui-action-tools/open-webui-action-tools/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
- <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    
+      
+        <title>Effective Software Testing - phautelman</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> phautelman
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#effective-software-testing-a-developers-guide" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
-                </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Tutorials</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" >Open WebUI</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../build-your-local-ai/build-your-local-ai/">Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../open-webui-rag/">Supercharge Your Local AI with RAG and Custom Knowledge Bases</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../open-webui-action-tools/">Beyond Text. Equipping Your Open WebUI AI with Action Tools</a>
-                </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" >Software</a>
-    <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Effective Software Testing</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#why-testing-is-important">Why Testing is Important</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#the-testing-pyramid">The Testing Pyramid</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#unit-testing">Unit Testing</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#integration-testing">Integration Testing</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#system-testing">System Testing</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#when-to-use-each">When to Use Each</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#specification-based-testing">Specification-Based Testing</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#steps-for-specification-based-testing">Steps for Specification-Based Testing</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#example-walkthrough-user-registration-function">Example Walkthrough: User Registration Function</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#structural-testing-and-code-coverage">Structural Testing and Code Coverage</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#steps-for-structural-testing">Steps for Structural Testing</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#code-coverage-criteria">Code Coverage Criteria</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#how-to-apply-mcdc-modified-conditiondecision-coverage">How to Apply MC/DC (Modified Condition/Decision Coverage)</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#example-walkthrough-of-mcdc-coverage">Example Walkthrough of MC/DC Coverage</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#additional-notes">Additional Notes</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#designing-contracts">Designing Contracts</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#understanding-contracts">Understanding Contracts</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#contracts-vs-validation">Contracts vs. Validation</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#implementing-contracts">Implementing Contracts</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#strong-vs-weak-conditions">Strong vs. Weak Conditions</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#example-complex-financial-system">Example: Complex Financial System</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#property-based-testing">Property-Based Testing</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#test-doubles-and-mocks">Test Doubles and Mocks</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#types-of-test-doubles">Types of Test Doubles</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#advantages-of-using-test-doubles">Advantages of Using Test Doubles</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#introduction-to-mockito">Introduction to Mockito</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#designing-for-testability">Designing for Testability</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#advanced-mocking-techniques">Advanced Mocking Techniques</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#best-practices-and-common-pitfalls">Best Practices and Common Pitfalls</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#handling-unmockable-components">Handling Unmockable Components</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#conclusion">Conclusion</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#test-driven-development">Test-Driven Development</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#tdd-process">TDD Process</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#advantages-of-tdd">Advantages of TDD</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#what-does-research-say-about-tdd">What Does Research Say About TDD?</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#when-not-to-use-tdd">When Not to Use TDD</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#integrating-tdd-and-proper-testing">Integrating TDD and Proper Testing</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#example-walkthrough">Example Walkthrough</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#writing-larger-tests">Writing Larger Tests</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#test-code-quality">Test Code Quality</a>
-    </li>
-    </ul>
-                </li>
-    </ul>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Software Tools</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="https://pahautelman.github.io/mcdc-calculator/">MC/DC Calculator</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="https://pahautelman.github.io/interactive-fish-cluser/">Interactive Fish Cluster</a>
-                  </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="phautelman" class="md-header__button md-logo" aria-label="phautelman" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            phautelman
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Effective Software Testing
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">phautelman</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Tutorials</li>
-          <li class="breadcrumb-item">Software</li>
-      <li class="breadcrumb-item active">Effective Software Testing</li>
-    <li class="wy-breadcrumbs-aside">
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <h1 id="effective-software-testing-a-developers-guide">Effective Software Testing: A Developer's Guide</h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="phautelman" class="md-nav__button md-logo" aria-label="phautelman" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    phautelman
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Open WebUI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Open WebUI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-your-local-ai/build-your-local-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-webui-rag/open-webui-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supercharge Your Local AI with RAG and Custom Knowledge Bases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-webui-action-tools/open-webui-action-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Beyond Text. Equipping Your Open WebUI AI with Action Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Effective Software Testing
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Effective Software Testing
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-testing-is-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Testing is Important
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-testing-pyramid" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Testing Pyramid
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Testing Pyramid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-each" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Each
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification-Based Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specification-Based Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-for-specification-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps for Specification-Based Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-walkthrough-user-registration-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Walkthrough: User Registration Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-testing-and-code-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Testing and Code Coverage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structural Testing and Code Coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-for-structural-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps for Structural Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-coverage-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Coverage Criteria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-apply-mcdc-modified-conditiondecision-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Apply MC/DC (Modified Condition/Decision Coverage)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-walkthrough-of-mcdc-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Walkthrough of MC/DC Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing Contracts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Designing Contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Contracts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-conditions-post-conditions-and-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-conditions, Post-conditions, and Invariants
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contracts-vs-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contracts vs. Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Contracts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strong-vs-weak-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strong vs. Weak Conditions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-complex-financial-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Complex Financial System
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Property-Based Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-doubles-and-mocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Doubles and Mocks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Doubles and Mocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-test-doubles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Test Doubles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-using-test-doubles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of Using Test Doubles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-mockito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Mockito
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#designing-for-testability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing for Testability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-mocking-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Mocking Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Mocking Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argument-capturing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Argument Capturing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulating-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulating Exceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-and-common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices and Common Pitfalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-unmockable-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Unmockable Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Unmockable Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wrapper-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapper Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mocking-static-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mocking Static Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-driven-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test-Driven Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test-Driven Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tdd-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      TDD Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-tdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of TDD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-does-research-say-about-tdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Does Research Say About TDD?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-not-to-use-tdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Not to Use TDD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrating-tdd-and-proper-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrating TDD and Proper Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Walkthrough
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-larger-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Larger Tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-code-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Code Quality
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Software Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pahautelman.github.io/mcdc-calculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MC/DC Calculator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pahautelman.github.io/interactive-fish-cluser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interactive Fish Cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-testing-is-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Testing is Important
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-testing-pyramid" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Testing Pyramid
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Testing Pyramid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-each" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Each
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification-Based Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specification-Based Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-for-specification-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps for Specification-Based Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-walkthrough-user-registration-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Walkthrough: User Registration Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-testing-and-code-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Testing and Code Coverage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structural Testing and Code Coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-for-structural-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps for Structural Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-coverage-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Coverage Criteria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-apply-mcdc-modified-conditiondecision-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Apply MC/DC (Modified Condition/Decision Coverage)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-walkthrough-of-mcdc-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Walkthrough of MC/DC Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing Contracts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Designing Contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Contracts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-conditions-post-conditions-and-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-conditions, Post-conditions, and Invariants
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contracts-vs-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contracts vs. Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Contracts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strong-vs-weak-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strong vs. Weak Conditions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-complex-financial-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Complex Financial System
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-based-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Property-Based Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-doubles-and-mocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Doubles and Mocks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Doubles and Mocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-test-doubles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Test Doubles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-using-test-doubles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of Using Test Doubles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-mockito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Mockito
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#designing-for-testability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing for Testability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-mocking-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Mocking Techniques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Mocking Techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argument-capturing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Argument Capturing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulating-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulating Exceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-and-common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices and Common Pitfalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-unmockable-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Unmockable Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Unmockable Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wrapper-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapper Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Injection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mocking-static-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mocking Static Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-driven-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test-Driven Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test-Driven Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tdd-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      TDD Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-tdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of TDD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-does-research-say-about-tdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Does Research Say About TDD?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-not-to-use-tdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Not to Use TDD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrating-tdd-and-proper-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrating TDD and Proper Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Walkthrough
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-larger-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Larger Tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-code-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Code Quality
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="effective-software-testing-a-developers-guide">Effective Software Testing: A Developer's Guide</h1>
 <p>Effective and systematic software testing is critical for ensuring the reliability and quality of software systems. This guide provides a comprehensive overview of best code testing practices, inspired by the book 'Effective Software Testing: A Developer's Guide' by the software quality and testing expert Maurício Aniche 🐐.</p>
 <p>The goal is to help developers understand the importance of proper testing, how to approach it systematically, and how to implement it effectively in their projects.</p>
-<p><br/></p>
+<hr />
 <h2 id="why-testing-is-important">Why Testing is Important</h2>
 <p><strong>Quality Assurance</strong>: Testing is essential because software failures can have severe consequences for businesses and end-users. Developers bear responsibility for the quality of the software they produce.</p>
 <p><strong>Bug Prevention</strong>: While simplicity in code design can reduce bugs, it cannot eliminate them. Testing is necessary to catch errors that arise from complex interactions within the software.</p>
 <p><strong>Cost-Efficiency</strong>: The cost of fixing bugs in production is often higher than the cost of thorough testing during development. Systematic testing reduces the risk of releasing buggy software, saving time and resources in the long run.</p>
 <p><strong>Code Improvement</strong>: Testing often leads to improvements in code quality. As developers write tests, they frequently identify areas where the code can be refactored for better clarity, efficiency, or maintainability. This process of writing tests and refactoring code results in more readable, maintainable, and robust software.</p>
 <p><strong>Confidence in Changes</strong>: A comprehensive test suite gives developers confidence to make changes or add new features, knowing that existing functionality can be quickly verified.</p>
-<p><br/></p>
+<hr />
 <h2 id="the-testing-pyramid">The Testing Pyramid</h2>
 <h3 id="unit-testing">Unit Testing</h3>
 <ul>
@@ -224,7 +1592,7 @@
 <li><strong>Integration Tests</strong>: For complex integrations with external services</li>
 <li><strong>System Tests</strong>: For critical workflows and high-risk areas of the application</li>
 </ul>
-<p><br/></p>
+<hr />
 <h2 id="specification-based-testing">Specification-Based Testing</h2>
 <p>Specification-based testing derives test cases from the software's requirements, ensuring the code meets its intended functionality.</p>
 <h3 id="steps-for-specification-based-testing">Steps for Specification-Based Testing</h3>
@@ -259,7 +1627,7 @@
 <li>Test a valid password</li>
 </ul>
 <p><strong>Augment with Experience</strong>: We might know from experience that users may attempt to use symbols in their passwords that could pose security risks (e.g., backticks (`), pipe (|), angle brackets (&lt;, &gt;), etc.). Test cases should be added to ensure that passwords containing such characters are deemed invalid.</p>
-<p><br/></p>
+<hr />
 <h2 id="structural-testing-and-code-coverage">Structural Testing and Code Coverage</h2>
 <p>Structural testing, also known as white-box testing, involves testing the internal structure of the code to ensure thorough coverage of all its components. Unlike specification-based (black-box) testing, which focuses on functional requirements, structural testing delves into the code to ensure that all paths, branches, and conditions are adequately tested.</p>
 <h3 id="steps-for-structural-testing">Steps for Structural Testing</h3>
@@ -395,7 +1763,7 @@
 <h3 id="additional-notes">Additional Notes</h3>
 <p><strong>Augmenting Specification-Based Testing</strong>: Structural testing should augment specification-based testing. This ensures that functional requirements are met and that the code behaves as expected in all scenarios.</p>
 <p><strong>Using Source Code for Structural Testing</strong>: The source code is valuable for identifying test cases that may not be evident from the requirements alone. Structural testing leverages the code to uncover potential issues that specification-based testing might miss.</p>
-<p><br/></p>
+<hr />
 <h2 id="designing-contracts">Designing Contracts</h2>
 <p>Designing contracts is a crucial aspect of software development that helps ensure the reliability and correctness of complex systems. This section will explore the concept of contracts, including pre-conditions, post-conditions, and invariants, and how they differ from validation.</p>
 <h3 id="understanding-contracts">Understanding Contracts</h3>
@@ -464,10 +1832,10 @@
 <li>Document the contracts clearly in the class and method documentation</li>
 </ol>
 <p>By implementing contracts, we can catch errors early, improve code reliability, and make the system's behaviour more predictable and maintainable.</p>
-<p><br/></p>
+<hr />
 <h2 id="property-based-testing">Property-Based Testing</h2>
 <p><em>[TODO]</em></p>
-<p><br/></p>
+<hr />
 <h2 id="test-doubles-and-mocks">Test Doubles and Mocks</h2>
 <p>In software development, classes often depend on other classes to perform their functions. While testing multiple classes together can be desirable, testing a unit in isolation is frequently necessary without relying on its dependencies. This is where test doubles come into play.</p>
 <p>Consider a scenario where class A depends on classes B and C, which in turn have their own dependencies:</p>
@@ -652,7 +2020,7 @@ class MyServiceTest {
 <h3 id="conclusion">Conclusion</h3>
 <p>Test doubles and mocks are powerful tools for creating effective unit tests. By understanding when and how to use them, developers can create robust test suites that verify code correctness and contribute to better software design. Remember to balance the use of test doubles with tests that use real dependencies to ensure comprehensive coverage and realistic testing scenarios.</p>
 <p>By incorporating these advanced techniques and design principles, you can create more robust and flexible tests. <em>Remember that the goal is not just to increase test coverage but to improve the overall design and reliability of our software.</em></p>
-<p><br/></p>
+<hr />
 <h2 id="test-driven-development">Test-Driven Development</h2>
 <p>Test-driven development (TDD) is a software development methodology in which tests are written before the actual code implementation. This approach inverts the traditional development process, where code is typically implemented first and tested later. TDD emphasizes writing automated test cases for each piece of functionality before writing the code to implement that functionality.</p>
 <h3 id="tdd-process">TDD Process</h3>
@@ -723,7 +2091,7 @@ public int[] twoSum(int[] nums, int target) {
     return null;
 }
 </code></pre>
-<h4 id="red-phase">🔴 Red Phase</h4>
+<p><strong>🔴 Red Phase</strong></p>
 <p>Let's start by devising test cases that check the method constraints.</p>
 <pre><code class="language-java">import org.example.Main;
 import org.junit.jupiter.api.DisplayName;
@@ -788,7 +2156,7 @@ public class MainTest {
 }
 </code></pre>
 <p>This first test forces us to define what should happen if the input is invalid, a case not specified in the method requirements. We decided to throw an <code>IllegalArgumentException</code>.</p>
-<h4 id="green-phase">🟢 Green Phase</h4>
+<p><strong>🟢 Green Phase</strong></p>
 <p>Implementing the solution is straightforward. We only need to add the method preconditions.</p>
 <pre><code class="language-java">public int[] twoSum(int[] nums, int target) {
     if (nums.length &lt; 2 || nums.length &gt; 104) {
@@ -804,10 +2172,10 @@ public class MainTest {
     return null;
 }
 </code></pre>
-<h4 id="refactor-phase">⚫ Refactor Phase</h4>
+<p><strong>⚫ Refactor Phase</strong></p>
 <p>For refactoring, one could consider extracting the validation checks to a separate method, but we will not do that as the method is not too complex yet.</p>
 <p><em>The process continues iteratively:</em></p>
-<h4 id="red-phase-next-cycle">🔴 Red Phase (Next Cycle)</h4>
+<p><strong>🔴 Red Phase (Next Cycle)</strong></p>
 <p>In the next cycle, we'll extend the test suite to verify that the method actually outputs the correct values.</p>
 <pre><code class="language-java">static Stream&lt;Arguments&gt; correctValuesAndOutputProvider() {
         // simple length 2 input array
@@ -858,7 +2226,7 @@ public class MainTest {
         assertArrayEquals(expected, result);
  }
 </code></pre>
-<h4 id="green-phase_1">🟢 Green Phase</h4>
+<p><strong>🟢 Green Phase</strong></p>
 <p>Implementing the solution that passes the tests.</p>
 <pre><code class="language-java">public int[] twoSum(int[] nums, int target) {
     if (nums.length &lt; 2 || nums.length &gt; 104) {
@@ -887,9 +2255,9 @@ public class MainTest {
     return result;
 }
 </code></pre>
-<h4 id="refactor-phase_1">⚫ Refactor Phase</h4>
+<p><strong>⚫ Refactor Phase</strong></p>
 <p>😛😛</p>
-<h4 id="red-phase-final-cycle">🔴 Red Phase (Final Cycle)</h4>
+<p><strong>🔴 Red Phase (Final Cycle)</strong></p>
 <p>Next, let's test the case where the method can't find a result.</p>
 <pre><code class="language-java">@Test
 void twoSum_correctInput_cantFindResult() {
@@ -899,7 +2267,7 @@ void twoSum_correctInput_cantFindResult() {
     assertNull(main.twoSum(nums, target));
 }
 </code></pre>
-<h4 id="green-phase_2">🟢 Green Phase</h4>
+<p><strong>🟢 Green Phase</strong></p>
 <p>Updating the implementation to handle this case.</p>
 <pre><code class="language-java">public int[] twoSum(int[] nums, int target) {
     if (nums.length &lt; 2 || nums.length &gt; 104) {
@@ -926,58 +2294,72 @@ void twoSum_correctInput_cantFindResult() {
     return result;
 }
 </code></pre>
-<h4 id="final-refactor">⚫ Final Refactor</h4>
+<p><strong>⚫ Final Refactor</strong></p>
 <p>Now, the method meets the expected functionality. We could consider rewriting the nested loop, adding post-conditions, or improving the method runtime (<code>O(n)</code> is possible) for further refactoring. These are left as exercises for the reader.</p>
 <pre><code class="language-java">TODO
 </code></pre>
 <h2 id="writing-larger-tests">Writing Larger Tests</h2>
 <p><em>[TODO]</em></p>
+<hr />
 <h2 id="test-code-quality">Test Code Quality</h2>
 <p><em>[TODO]</em></p>
 <hr />
 <p><em>This guide provides a comprehensive overview of effective software testing practices. For more advanced topics and specific implementation details, consider referring to additional resources and the original book by Maurício Aniche.</em></p>
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../open-webui-action-tools/" class="btn btn-neutral float-left" title="Beyond Text. Equipping Your Open WebUI AI with Action Tools"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-      <span><a href="../open-webui-action-tools/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-  </span>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../..";</script>
-    <script src="../../js/theme_extra.js"></script>
-    <script src="../../js/theme.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
 </script></body>
 </html>
