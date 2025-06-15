@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Supercharge Your Local AI with RAG and Custom Knowledge Bases - phautelman</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Supercharge Your Local AI with RAG and Custom Knowledge Bases";
+        var mkdocs_page_input_path = "tutorials/open-webui-rag.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> phautelman
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Open WebUI</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../build-your-local-ai/">Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Supercharge Your Local AI with RAG and Custom Knowledge Bases</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-rag-and-why-should-you-care">What is RAG and Why Should You Care?</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#under-the-hood-vectors-and-embeddings">Under the Hood: Vectors and Embeddings</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rag-options-in-open-webui">RAG Options in Open WebUI</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-single-document-upload-quick-simple">1. Single Document Upload (Quick &amp; Simple)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-web-information-retrieval">2. Web Information Retrieval</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-knowledge-collections-comprehensive">3. Knowledge Collections (Comprehensive)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4-dedicated-knowledge-enabled-models">4. Dedicated Knowledge-Enabled Models</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optimizing-your-rag-system">Optimizing Your RAG System</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#text-splitter">Text Splitter</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#embedding-models">Embedding Models</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#hybrid-search-with-re-ranking">Hybrid Search with Re-ranking</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#top-k-number-of-retrieved-documents">Top K: Number of Retrieved Documents</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#relevance-threshold">Relevance Threshold</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cloud-storage-integration">Cloud Storage Integration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-processing-for-knowledge-base-creation">Data Processing for Knowledge Base Creation</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#data-cleaning-and-preparation-techniques">Data Cleaning and Preparation Techniques</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#choosing-the-right-model-for-rag">Choosing the Right Model for RAG</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-the-perfect-system-prompt-for-rag">Creating the Perfect System Prompt for RAG</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#response-guidelines">Response Guidelines:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interaction-approach">Interaction Approach:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#real-world-rag-examples">Real-World RAG Examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#response-guidelines_1">Response Guidelines:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interaction-approach_1">Interaction Approach:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#primary-goals">Primary Goals:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../open-webui-action-tools/">Beyond Text. Equipping Your Open WebUI AI with Action Tools</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Software</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../effective-software-testing/">Effective Software Testing</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software Tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://pahautelman.github.io/mcdc-calculator/">MC/DC Calculator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://pahautelman.github.io/interactive-fish-cluser/">Interactive Fish Cluster</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">phautelman</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tutorials</li>
+          <li class="breadcrumb-item">Open WebUI</li>
+      <li class="breadcrumb-item active">Supercharge Your Local AI with RAG and Custom Knowledge Bases</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="open-webui-tutorial-supercharge-your-local-ai-with-rag-and-custom-knowledge-bases">Open WebUI tutorial. Supercharge Your Local AI with RAG and Custom Knowledge Bases</h1>
+<p>In this second part of our local AI series, we’ll dive into <em>Retrieval-Augmented Generation (RAG)</em>, showing you how to dramatically improve your AI’s capabilities by connecting it to your own documents and knowledge sources. By the end, you’ll have an AI that can answer questions based on private data without sending anything to external servers.</p>
+<blockquote>
+<p>TODO: add pic</p>
+</blockquote>
+<p><br/></p>
+<h2 id="table-of-contents">Table of Contents:</h2>
+<ul>
+<li>Introduction</li>
+<li>What is RAG and Why Should You Care?</li>
+<li>RAG Options in Open WebUI</li>
+<li>Optimizing Your RAG System</li>
+<li>Data Processing for Knowledge Base Creation</li>
+<li>Choosing the Right Model for RAG</li>
+<li>Creating the Perfect System Prompt for RAG</li>
+<li>Real-World RAG Examples<ul>
+<li>Wikipedia Knowledge Base</li>
+<li>Open WebUI Documentation Assistant</li>
+</ul>
+</li>
+<li>Conclusion</li>
+</ul>
+<p><br /></p>
+<h2 id="introduction">Introduction</h2>
+<p>In Part One, we set up a robust local AI environment with Ollama and Open WebUI, giving you a completely private, subscription-free alternative to commercial AI services. Today, we’re taking this setup to the next level.</p>
+<p>While large language models (LLMs) are impressive, they come with two significant limitations:</p>
+<ol>
+<li>Their knowledge has a cutoff date (they don’t know about recent events)</li>
+<li>They don’t know about your private information (documents, data, etc.)</li>
+</ol>
+<p>This is where RAG comes in — a technique that allows your local AI to access, understand, and leverage custom knowledge sources to provide more accurate, personalized, and up-to-date responses.</p>
+<p><strong>What you’ll learn in this guide:</strong></p>
+<ul>
+<li>Understanding how RAG works and why it matters</li>
+<li>How to set up and optimize RAG in Open WebUI.</li>
+<li>Real-world examples of RAG with practical applications.</li>
+<li>General tips and tricks for achieving the best results with your Open WebUI application.</li>
+</ul>
+<p>Let’s transform your local AI from a general-purpose assistant into a specialized knowledge worker tailored to your specific needs.</p>
+<p><br /></p>
+<h2 id="what-is-rag-and-why-should-you-care">What is RAG and Why Should You Care?</h2>
+<blockquote>
+<p>TODO: add pic
+Retrieval-Augmented Generation visualized</p>
+</blockquote>
+<p>RAG, or Retrieval-Augmented Generation, might sound technical. Still, the concept is straightforward: when your AI receives a question, it first searches your documents for relevant information. Then, it uses the retrieved data to generate a more informed response.</p>
+<p>Here’s the magic of RAG in simple terms:</p>
+<ol>
+<li><strong>Your question</strong> → “Can you explain how our company’s vacation policy works?”</li>
+<li><strong>The RAG system</strong> → Searches your company handbook for relevant sections</li>
+<li><strong>Retrieved context</strong> → Found policy details on pages 24–25</li>
+<li><strong>The AI</strong> → Uses this retrieved information to answer accurately</li>
+</ol>
+<p>Without RAG, your AI would either make something up (hallucinate) or say it doesn’t know. RAG can provide precise answers based on your actual documents.</p>
+<blockquote>
+<p><em><strong>Pro Tip</strong>: RAG is particularly valuable for specialized knowledge work — think customer support, research assistance, or mining insights from technical documentation.</em></p>
+</blockquote>
+<h3 id="under-the-hood-vectors-and-embeddings">Under the Hood: Vectors and Embeddings</h3>
+<blockquote>
+<p>TODO: add pic</p>
+</blockquote>
+<p>At a technical level, RAG converts your documents into “vectors” — essentially mathematical representations of text that capture semantic meaning. When you upload documents to Open WebUI:</p>
+<ol>
+<li>The text is split into manageable chunks</li>
+<li>Each chunk is encoded into a vector using an embedding model</li>
+<li>These vectors are stored in a database optimized for similarity search</li>
+<li>When you ask a question, it’s also converted to a vector</li>
+<li>The system finds the most similar document vectors to your question vector</li>
+</ol>
+<p>This vector-based approach allows the system to retrieve information based on meaning, not just keyword matching.</p>
+<p><br /></p>
+<h2 id="rag-options-in-open-webui">RAG Options in Open WebUI</h2>
+<p>Open WebUI offers several ways to implement RAG without writing a single line of code. Let’s explore each approach:</p>
+<h3 id="1-single-document-upload-quick-simple">1. Single Document Upload (Quick &amp; Simple)</h3>
+<p><em>The most straightforward approach is uploading a document directly to the chat interface.</em></p>
+<p><strong>How to do it:</strong></p>
+<ol>
+<li>Start a new chat in Open WebUI</li>
+<li>Click the upload button in the chat input area</li>
+<li>Select your document</li>
+<li>Ask questions related to your document</li>
+</ol>
+<blockquote>
+<p>TODO: add pic</p>
+</blockquote>
+<p><strong>Best for:</strong> Quick, one-off questions about a specific document.</p>
+<h3 id="2-web-information-retrieval">2. Web Information Retrieval</h3>
+<p><em>Need information from a specific webpage?</em></p>
+<p><strong>How to do it:</strong></p>
+<ol>
+<li>In your chat, type <code>#</code> followed by a URL</li>
+<li>Open WebUI fetches and parses the webpage content</li>
+<li>Ask questions about the content</li>
+</ol>
+<p><strong>Example</strong>: <code>#https://yourcompany.com/blog/latest-product what features were announced?</code></p>
+<p><strong>Best for</strong>: Getting information from specific online sources without manual copying</p>
+<h3 id="3-knowledge-collections-comprehensive">3. Knowledge Collections (Comprehensive)</h3>
+<p><em>For more permanent knowledge bases.</em></p>
+<p><strong>How to do it:</strong></p>
+<ol>
+<li>Navigate to the ‘Knowledge’ tab in the workspace area</li>
+<li>Create a new collection (e.g., “Company Docs”)</li>
+<li>Upload multiple documents to this collection</li>
+<li>
+<p>Access this knowledge in chats with the <code>#</code> symbol:</p>
+<ul>
+<li>Type #Company Docs what is our refund policy</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>TODO: add pic</p>
+</blockquote>
+<p><strong>Best for</strong>: Building permanent knowledge bases from multiple documents</p>
+<h3 id="4-dedicated-knowledge-enabled-models">4. Dedicated Knowledge-Enabled Models</h3>
+<p><em>The most powerful approach</em>.</p>
+<p><strong>How to do it:</strong></p>
+<ol>
+<li>Create a new model in Open WebUI</li>
+<li>In the model settings, associate it with specific knowledge collections</li>
+<li>Add a custom system prompt and adjust model parameters (more on this later)</li>
+<li>Use this model for all questions related to that knowledge domain</li>
+</ol>
+<p><strong>Best for</strong>: Creating specialized assistants for specific knowledge domains.</p>
+<p><br /></p>
+<h2 id="optimizing-your-rag-system">Optimizing Your RAG System</h2>
+<p>Let’s make your RAG system faster and more accurate by tweaking some settings:</p>
+<p>Go to ‘Settings &gt; Admin Settings &gt; Documents’</p>
+<blockquote>
+<p>TODO: add pic</p>
+</blockquote>
+<p>Here are the key settings to consider:</p>
+<h4 id="text-splitter">Text Splitter</h4>
+<p>Open WebUI offers two methods for splitting (or chunking) the files:</p>
+<ul>
+<li><strong>Character Chunking</strong>: Splits text based on character count.</li>
+<li><strong>Token Chunking (Recommended)</strong>: Splits text based on token count.</li>
+</ul>
+<p><strong>Why token chunking is better:</strong></p>
+<ul>
+<li>More reliable size estimation since LLMs process tokens rather than characters.</li>
+<li>It is easier to manage context window usage efficiently.</li>
+</ul>
+<p><strong>Choosing the Right Chunk Size:</strong></p>
+<p>The default chunk size is <strong>500 tokens</strong>, which works well for most applications. But depending on your knowledge base, you might need to adjust it:</p>
+<ul>
+<li><strong>Smaller chunks (~300 tokens or less)</strong> → Useful for particular queries where precision is key, such as legal documents or technical manuals.</li>
+<li><strong>Larger chunks (~800–1000 tokens)</strong> → Preferred for structured data like research papers, where full paragraphs or sections provide better context.</li>
+</ul>
+<p>For comparison, <strong>500 tokens</strong> are roughly <strong>375 words</strong> or about <strong>two paragraphs of text</strong>, though this can vary based on content density and AI model.</p>
+<p><strong>About Chunk Overlap</strong>:</p>
+<p>This setting allows consecutive chunks to share some content, preventing loss of meaning when text is split. A good starting point is <strong>10–20% overlap</strong> to ensure smooth continuity.</p>
+<h4 id="embedding-models">Embedding Models</h4>
+<p>Embedding models convert text into numerical representations that help find similar content. In Open WebUI, you can select different embedding models:</p>
+<ul>
+<li><strong>Pro tip</strong>: For RAG, using a small, fast model for embeddings is critical since it will process large amounts of text. The <a href="https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0">Snowflake/snowflake-arctic-embed-l-v2.0</a> model offers excellent performance at only ~500M parameters.</li>
+<li><strong>Recommendation</strong>: Use the <a href="https://huggingface.co/spaces/mteb/leaderboard">HuggingFace MTEB leaderboard</a> to find fast and performant embedding models</li>
+<li><strong>Chunk Size and Model Limitations</strong>: Most embedding models have a fixed token capacity (e.g., 512, 1024, or 8192 tokens). When setting the chunk size, make sure it does not exceed the embedding model’s maximum token limit.</li>
+</ul>
+<blockquote>
+<p>TODO: add pic
+Use the MTEB leaderboard to find the best retrieval and reranking models.</p>
+</blockquote>
+<h4 id="hybrid-search-with-re-ranking">Hybrid Search with Re-ranking</h4>
+<p><strong>Highly Recommended:</strong> Enable hybrid search with CrossEncoder re-ranking to improve the relevance of retrieved documents.</p>
+<p><strong>How re-ranking works in the RAG pipeline:</strong></p>
+<ol>
+<li>Initial retrieval finds potentially relevant chunks based on vector similarity</li>
+<li>Re-ranking then evaluates these candidates more thoroughly</li>
+<li>The most relevant chunks (after re-ranking) are sent to the LLM</li>
+</ol>
+<p>This two-stage approach significantly improves the quality of retrieved information by filtering out false positives from the initial retrieval stage.</p>
+<h4 id="top-k-number-of-retrieved-documents">Top K: Number of Retrieved Documents</h4>
+<p>The <strong>Top K</strong> setting controls how many document chunks are retrieved for each query. This directly impacts the quality of responses by determining how much context is provided to the model. A greater value will help answer complex user queries that discuss multiple concepts.</p>
+<blockquote>
+<p><em><strong>Pro Tip</strong>: The chunk size and number of retrieved documents matter! The formula (chunk_token_size × num_retrieved_documents) should not exceed half of your LLM model’s context window to leave room for the actual conversation.</em></p>
+</blockquote>
+<h4 id="relevance-threshold">Relevance Threshold</h4>
+<p>Adjust this to control how strict the system is when determining if a document section is relevant to a query. Lower values retrieve more (potentially less relevant) content; higher values are more selective. A threshold <strong>between 0.1 and 0.2</strong> works well for most use cases, balancing recall and precision.</p>
+<h4 id="cloud-storage-integration">Cloud Storage Integration</h4>
+<p>Connect Google Drive or OneDrive to expand your knowledge sources (great for teams already using these platforms).</p>
+<blockquote>
+<p>TODO: add pic
+My RAG settings</p>
+</blockquote>
+<p><br /></p>
+<h2 id="data-processing-for-knowledge-base-creation">Data Processing for Knowledge Base Creation</h2>
+<p>Before uploading documents to your RAG system, performing comprehensive data processing is crucial. This step significantly improves the quality and effectiveness of your knowledge base. Here are key strategies for preparing your data:</p>
+<h4 id="data-cleaning-and-preparation-techniques">Data Cleaning and Preparation Techniques</h4>
+<p>Web Scraping Optimization When collecting data from the web, focus on removing unnecessary elements:</p>
+<p>Strip out navigation menus, headers, footers, and sidebars
+Remove duplicate text blocks
+Clean up formatting inconsistencies
+Content Normalization</p>
+<p>Replace images with descriptive alt text or image descriptions
+Standardize text formatting (consistent headings, paragraphs)
+Document Granularity: Break down large documents into focused, atomic units:</p>
+<p>Each document should answer one specific user question
+Create smaller, more targeted documents that are easier to retrieve
+Content Enhancement</p>
+<p>Summarize complex passages to improve readability
+Rewrite content to improve clarity and conciseness
+Add metadata to each document (e.g., source URL, timestamp of retrieval, relevant tags or categories, author, etc.)
+AI-Powered Curation: Leverage AI models for advanced data processing:</p>
+<p>Use a performant general-purpose AI to review and refine document collections
+Verify information accuracy
+Detect and remove redundant or low-quality content
+Suggest additional metadata or tags
+Recommended Storage Format
+Consider using a knowledge management system like Obsidian, which offers:</p>
+<p>Mind-map style note organization
+Single-topic focus for each document
+Built-in tagging system
+Easy lookup of related concepts
+Pro Tip: Refer to my GitHub repository for a comprehensive document-processing AI pipeline that automates these steps.</p>
+<h2 id="choosing-the-right-model-for-rag">Choosing the Right Model for RAG</h2>
+<p>Not all models are created equal when answering RAG user queries.</p>
+<p>Key Considerations:</p>
+<p>Context Window: Larger is better for accommodating retrieved text and conversation.
+Model Size: Surprisingly, smaller models often work well with RAG since the retrieval system does the heavy lifting.
+Recommendations:</p>
+<p>For general RAG: Models with 7B to 14B parameters often have adequate capabilities to utilize the retrieved information and answer user queries.
+For complex reasoning with RAG: Consider larger models (30B+) but be aware of performance impacts
+Always prioritize models with longer context windows when doing RAG.</p>
+<h2 id="creating-the-perfect-system-prompt-for-rag">Creating the Perfect System Prompt for RAG</h2>
+<p>The system prompt is where you tell your AI how to use the retrieved information. Here’s an example prompt for a documentation assistant:</p>
+<p>You are a specialized assistant with deep knowledge of Open WebUI, an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.</p>
+<h2 id="response-guidelines">Response Guidelines:</h2>
+<ol>
+<li>Answer questions EXCLUSIVELY using the Open WebUI knowledge base provided to you</li>
+<li>Always cite your sources with BOTH the article title and reference URL</li>
+<li>When information is not found in the provided documents, clearly state this limitation</li>
+<li>DO NOT rely on general knowledge about AI platforms or related topics when documentation is unavailable</li>
+<li>Format all citations at the end of your response as: 
+   &lt;<Information retrieved from sources: <a href="URL">Article Title</a>, <a href="URL">Article Title</a>>&gt;</li>
+</ol>
+<h2 id="interaction-approach">Interaction Approach:</h2>
+<ul>
+<li>Seek clarification when user intent is ambiguous rather than making assumptions</li>
+<li>Ask targeted follow-up questions to understand user needs and goals better</li>
+<li>Maintain a helpful, knowledgeable tone focused on practical solutions</li>
+<li>When appropriate, suggest related features or documentation that might benefit the user</li>
+</ul>
+<p>Remember that your answers should prioritize accuracy over completeness—it's better to acknowledge limitations than provide potentially incorrect information that is not supported by documentation.
+Key Elements of a Good RAG System Prompt:</p>
+<p>Clear instructions on when and how to use the retrieved information
+Guidelines for citing sources
+Explicit instructions for handling cases where information isn’t found
+Tone and interaction style guidance
+If the model uses RAG as a tool-calling function, instruct it to request clarifications when encountering ambiguous queries before executing RAG. This ensures that the retrieved documents accurately address the user’s query.</p>
+<h2 id="real-world-rag-examples">Real-World RAG Examples</h2>
+<p>Now, let’s see RAG in action with two practical examples. All data and code used in these examples can be found in the linked GitHub repositories.</p>
+<p>Example 1: Wikipedia Knowledge Base
+Objective: Validate the RAG system’s ability to retrieve precise information from a massive document collection.</p>
+<p>Dataset Overview:</p>
+<p>Source: WikiText-2 dataset
+Size: Over 40,000 Wikipedia articles
+Challenge: Find specific, relevant information within a vast knowledge base
+Setup Process:</p>
+<p>Download the WikiText-2 dataset
+Upload the entire dataset to Open WebUI as a knowledge collection. (Note: This process may take ~15 minutes, depending on your hardware)</p>
+<p>The Test:</p>
+<p>Query: “Can you explain the evolution of Arundel House from a private mansion to a meeting place for the Royal Society?”
+Without RAG: The model provides a general answer based on its training</p>
+<p>Without RAG, the model hallucinates information regarding English history.
+With RAG: The system retrieves the specific Wikipedia section about Arundel House and offers precise details with citations</p>
+<p>With RAG, the model retrieves factual information about Arundel House and provides citations.
+The result is nothing short of remarkable! Our carefully configured RAG system found the passage that directly addresses the historical transition of Arundel House in a corpus of over 40,000 Wikipedia articles.</p>
+<p>This isn’t just search; it’s intelligent information retrieval. Our RAG configuration — with its token-based chunking, relevance threshold, and hybrid search — perfectly worked to:</p>
+<p>Process and save the knowledge base
+Understand the semantics of the query
+Search through the extensive document collections
+Extract the most relevant information
+Present a targeted, citation-backed response
+Your turn: Navigate to a random paragraph in the WikiText datasource and ask a question related to that paragraph. See if the model can correctly find the excerpt you are interested in.</p>
+<p>Example 2: Open WebUI Documentation Assistant
+Objective: Create a specialized AI assistant to navigate Open WebUI documentation efficiently.</p>
+<p>Setup Process</p>
+<p>Document Collection: Scrape the official Open WebUI documentation and post-process documents using an AI pipeline.
+The code used to scrape the documentation can be found here
+Code for processing the document here
+Final data can be downloaded from here
+Create a new knowledge collection with these documents.
+Create a custom model with access to this knowledge collection. We adjust some model hyper-parameters to enhance the answer’s clarity:
+Lower temperature for factual responses. Adjust to 0.1
+Extend the context window. The default Open WebUI context length, 2048, may not hold all retrieved documents. Adjust it to a greater value while considering your model’s context limit.
+(Note: a larger context will require more memory. If text generation slows down, it could mean Ollama is exceeding your GPU resources and trying to rebuild the model. In this case, reduce the context length to maintain consistent text generation speed and GPU memory usage)</p>
+<p>If your GPU memory usage looks something like this, then you probably need to lower the context length :p
+Custom system prompt for documentation navigation
+You are a specialized assistant with deep knowledge of Open WebUI, an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.</p>
+<h2 id="response-guidelines_1">Response Guidelines:</h2>
+<ol>
+<li>Answer questions EXCLUSIVELY using the Open WebUI knowledge base provided to you</li>
+<li>Always cite your sources with BOTH the article title and reference URL</li>
+<li>When information is not found in the provided documents, clearly state this limitation</li>
+<li>DO NOT rely on general knowledge about AI platforms or related topics when documentation is unavailable</li>
+<li>Format all citations at the end of your response as: 
+   &lt;<Information retrieved from sources: <a href="URL">Article Title</a>, <a href="URL">Article Title</a>>&gt;</li>
+</ol>
+<h2 id="interaction-approach_1">Interaction Approach:</h2>
+<ul>
+<li>Seek clarification when user intent is ambiguous rather than making assumptions</li>
+<li>Ask targeted follow-up questions to understand user needs and goals better</li>
+<li>Maintain a helpful, knowledgeable tone focused on practical solutions</li>
+<li>When appropriate, suggest related features or documentation that might benefit the user</li>
+</ul>
+<h2 id="primary-goals">Primary Goals:</h2>
+<ul>
+<li>Help users effectively set up, configure, and utilize Open WebUI</li>
+<li>Troubleshoot common issues using only documented solutions</li>
+<li>Guide users to make the most of Open WebUI's offline capabilities</li>
+<li>Provide accurate technical information with proper attribution</li>
+</ul>
+<p>Remember that your answers should prioritize accuracy over completeness—it's better to acknowledge limitations than provide potentially incorrect information that is not supported by documentation.</p>
+<p>Test RAG capabilities.</p>
+<p>Preview of the upcoming article in the series 👀 👀
+The results speak for themselves! The Documentation Assistant transforms complex technical documentation into a flexible and intelligent resource.</p>
+<p>This customized RAG setup empowers users by providing precise, citation-backed insights that convert intricate information into clear, actionable guidance. Whether you’re troubleshooting, training, or improving internal processes, Open WebUI provides advanced RAG capabilities at your fingertips, ready to enhance your expertise and efficiency in your tasks.</p>
+<p>Pro Tip: This approach can easily be adapted for company internal documentation, technical manuals, or customer support knowledge bases.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>By implementing RAG with Open WebUI, you’ve transformed your local AI from a general chatbot into a specialized assistant with access to your private knowledge. This setup offers several advantages:</p>
+<p>Complete privacy: Your documents and queries never leave your machine
+Customization: The AI is now tailored to your specific knowledge domain
+Accuracy: Dramatically reduced hallucinations when answering factual questions
+Up-to-date information: Your AI is only as current as your knowledge base
+Most importantly, you’ve built this entire system using free, open-source tools running on your hardware.</p>
+<p>Next Steps
+Ready to take your local AI to the next level?</p>
+<p>Experiment with different knowledge collections for different domains
+Try different models to find the best performance/accuracy balance
+Share your RAG setup with colleagues to create a collaborative knowledge system
+What knowledge bases are you planning to create? Let me know in the comments!</p>
+<p>Beyond RAG: Function Calling and Tools
+While RAG is powerful, it’s just the beginning. In our following articles, we’ll explore:</p>
+<p>Integrating custom Python functions with your AI
+Building tools that connect to external APIs and services
+Creating multi-agent systems that combine different models for complex tasks
+References
+Open WebUI: https://github.com/open-webui/open-webui
+Ollama: https://github.com/ollama/ollama
+WikiText2 data: https://github.com/pahautelman/wikitext2-raw
+Scraper for Open WebUI documentation: https://github.com/pahautelman/Open-WebUI-documentation-scraper
+Results of running the Obsidian AI pipeline on Open WebUI documentation: https://github.com/pahautelman/Obsidian-Text-Transformer-LocalAI-output
+AI pipeline for processing documents into Obsidian format: https://github.com/pahautelman/Obsidian-Text-Transformer-LocalAI (forked from https://github.com/Amine-LG/Obsidian-Text-Transformer-LocalAI)</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../build-your-local-ai/" class="btn btn-neutral float-left" title="Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../open-webui-action-tools/" class="btn btn-neutral float-right" title="Beyond Text. Equipping Your Open WebUI AI with Action Tools">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../build-your-local-ai/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../open-webui-action-tools/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

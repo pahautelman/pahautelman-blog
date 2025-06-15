@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI - phautelman</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama \u0026 Open WebUI";
+        var mkdocs_page_input_path = "tutorials/build-your-local-ai.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> phautelman
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Open WebUI</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#toolstack-overview">Toolstack Overview</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#ollama">Ollama</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#openwebui">OpenWebUI</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#environment-setup">Environment Setup</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#setting-up-python-311">Setting Up Python 3.11</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installing-and-configuring-ollama">Installing and Configuring Ollama</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installing-and-configuring-open-webui">Installing and Configuring Open WebUI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-openwebui-functionality">Basic OpenWebUI Functionality</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#enabling-web-search">Enabling Web Search</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#test-search-functionality">Test Search Functionality</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#code-interpreter">Code Interpreter</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#creating-a-basic-custom-model">Creating a Basic Custom Model</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conclusion-next-steps">Conclusion &amp; Next Steps</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#what-weve-accomplished">What We’ve Accomplished</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps:</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../open-webui-rag/">Supercharge Your Local AI with RAG and Custom Knowledge Bases</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../open-webui-action-tools/">Beyond Text. Equipping Your Open WebUI AI with Action Tools</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Software</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../effective-software-testing/">Effective Software Testing</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software Tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://pahautelman.github.io/mcdc-calculator/">MC/DC Calculator</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://pahautelman.github.io/interactive-fish-cluser/">Interactive Fish Cluster</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">phautelman</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tutorials</li>
+          <li class="breadcrumb-item">Open WebUI</li>
+      <li class="breadcrumb-item active">Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="build-your-local-ai-from-zero-to-a-custom-chatgpt-interface-with-ollama-open-webui">Build Your Local AI: From Zero to a Custom ChatGPT Interface with Ollama &amp; Open WebUI</h1>
+<p>Imagine having ChatGPT or DeepSeek-like capabilities right on your computer — no subscription fees, no privacy concerns, no waiting for responses, and complete customization options. Sounds too good to be true? <strong>It’s not!</strong></p>
+<p>Large Language Models (LLMs) have become indispensable tools for many of us. Whether you’re using them to process text, learn new concepts, generate code solutions, automate workflows, or enjoy chatting with your computer buddy — they’re changing how we work and create.</p>
+<p>Large Language Models (LLMs) have become indispensable tools for many of us. Whether you’re using them to process text, learn new concepts, generate code solutions, automate workflows, or enjoy chatting with your computer buddy — they’re changing how we work and create.</p>
+<p>But there’s a catch with popular services like OpenAI, Anthropic, or Perplexity: they often come with limitations:</p>
+<ul>
+<li><strong>Cost</strong>: Monthly subscriptions or per-token pricing can add up quickly </li>
+<li><strong>Limited APIs</strong>: Restricted customization options </li>
+<li><strong>Missing features</strong>: Many don’t offer RAG (Retrieval-Augmented Generation) capabilities </li>
+<li><strong>Privacy concerns</strong>: Your data might be used for training or stored on third-party servers </li>
+<li><strong>Response delays</strong>: Peak usage times can mean long waits for responses </li>
+</ul>
+<p><strong>The solution?</strong> A locally running LLM instance that you can fully customize to your specific needs — complete with a user-friendly interface that rivals commercial offerings.</p>
+<p><strong>In this guide (about a 1-hour setup)</strong>, I’ll walk you through setting up a robust local AI environment using free, open-source tools that provide:</p>
+<ul>
+<li>Total privacy (your data stays on your machine)</li>
+<li>No subscription costs</li>
+<li>Minimal response waiting time</li>
+<li>Nearly comparable results to high-end commercial LLMs</li>
+<li>Complete customizability for your specific use cases</li>
+</ul>
+<blockquote>
+<p><em>Personal note: I've been using this setup for two months, and it has cut my monthly AI subscription costs to zero while increasing my productivity. The initial setup time is worth every minute for the long-term benefits.</em></p>
+</blockquote>
+<p><br/></p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li>Toolstack Overview</li>
+<li>Environment Setup</li>
+<li>Installing and Configuring Ollama</li>
+<li>Installing and Configuring Open WebUI</li>
+<li>Basic OpenWebUI Functionality<ul>
+<li>Enabling Web Search</li>
+<li>Code Interpreter</li>
+<li>Creating a Basic Custom Model</li>
+</ul>
+</li>
+<li>Conclusion &amp; Next Steps</li>
+</ul>
+<p><br/></p>
+<h2 id="toolstack-overview">Toolstack Overview</h2>
+<p>Our local AI setup will use two primary tools:</p>
+<h4 id="ollama">Ollama</h4>
+<p><a href="https://github.com/ollama/ollama">Ollama</a> is an open-source framework designed specifically for running LLMs locally. It provides:</p>
+<ul>
+<li>Access to a wide variety of open-source models (DeepSeek, Llama, Phi, Mistral, Gemma, and many more)</li>
+<li>Text generation capabilities</li>
+<li>Multimodal support (for models that can process images)</li>
+<li>Efficient model management</li>
+</ul>
+<h4 id="openwebui">OpenWebUI</h4>
+<p><a href="https://github.com/open-webui/open-webui">OpenWebUI</a> is currently the most prominent open-source project offering a UI interface for your Ollama instance. Think of it as your local version of the ChatGPT or Claude interface, but with even more features:</p>
+<ul>
+<li>User-friendly chat interface</li>
+<li>Model customization</li>
+<li>RAG capabilities</li>
+<li>Web search integration</li>
+<li>Code interpreter</li>
+<li>Complex workflow design</li>
+<li>And many more features are being actively developed</li>
+</ul>
+<p>The best part? OpenWebUI is constantly improving as passionate engineers contribute to this open-source project, bringing features from proprietary platforms to this free alternative.</p>
+<h4 id="requirements">Requirements</h4>
+<p>Before we start, make sure your system meets these minimum requirements:</p>
+<ul>
+<li>A GPU-powered laptop or desktop (minimum 4GB GPU memory, 8GB+ recommended)</li>
+<li>At least 20GB of free disk space (models can be large)</li>
+<li>A modern web browser</li>
+</ul>
+<blockquote>
+<p><em><strong>Pro tip:</strong> While CPU-only setups technically work, they’ll be significantly slower. Even a modest GPU will greatly improve your experience.</em></p>
+</blockquote>
+<p><br/></p>
+<h2 id="environment-setup">Environment Setup</h2>
+<h4 id="setting-up-python-311">Setting Up Python 3.11</h4>
+<p>Ollama and OpenWebUI work best with Python 3.11, so we’ll start by making sure we have the correct version installed.</p>
+<p>First, check your current Python version:</p>
+<pre><code class="language-unix">python --version
+</code></pre>
+<p><img alt="&gt; Python 3.13.2" src="/assets/build-your-local-ai/python-version.webp" /></p>
+<p><em>If you don’t have Python 3.11</em>, we’ll install it using <a href="https://github.com/pyenv/pyenv">pyenv</a>, an excellent tool for managing multiple Python versions:</p>
+<blockquote>
+<p><em><strong>Note</strong>: Visit the <a href="https://github.com/pyenv/pyenv">pyenv GitHub repository</a> for detailed installation instructions specific to your OS.</em></p>
+</blockquote>
+<h5 id="for-macos-users">For macOS users:</h5>
+<p><strong>1. Install pyenv</strong></p>
+<pre><code class="language-unix">brew update
+brew install pyenv
+</code></pre>
+<p><strong>2. Configure your shell</strong>
+Add these lines to your shell configuration file (<code>.bashrc</code>, <code>.zshrc</code>, or equivalent):</p>
+<pre><code class="language-unix">export PYENV_ROOT=&quot;$HOME/.pyenv&quot;
+export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;
+eval &quot;$(pyenv init --path)&quot;
+eval &quot;$(pyenv init -)&quot;
+</code></pre>
+<p>Then reload your shell:</p>
+<pre><code class="language-unix">exec &quot;$SHELL&quot;
+</code></pre>
+<p><strong>3. Install Python 3.11</strong></p>
+<pre><code class="language-unix">pyenv install 3.11
+</code></pre>
+<p><strong>4. Set it as your global Python version</strong></p>
+<p>This step is optional but is recommended for quickly starting Ollama and Open WebUI from your terminal in future sessions.</p>
+<pre><code class="language-unix">pyenv global 3.11
+</code></pre>
+<p><strong>5. Verify the installation</strong></p>
+<pre><code class="language-unix">python --version
+</code></pre>
+<p>You should see an output confirming Python 3.11.8 is now installed.</p>
+<p><img alt="&gt; Python 3.11.11" src="/assets/build-your-local-ai/updated-python-version.webp" /></p>
+<h2 id="installing-and-configuring-ollama">Installing and Configuring Ollama</h2>
+<p>Now that we have our Python environment ready let’s install <a href="https://github.com/ollama/ollama">Ollama</a>:</p>
+<p><strong>1. Download and Install Ollama</strong></p>
+<blockquote>
+<p>Visit the Ollama GitHub page and follow the installation instructions for your OS.</p>
+</blockquote>
+<p><em>For macOS users</em>, download the .zip package from the Ollama official repository, unzip the file and install it by clicking the ‘Ollama’ application file.</p>
+<p><img alt="" src="/assets/build-your-local-ai/download-ollama.webp" /></p>
+<p><strong>2. Verify Ollama Installation</strong></p>
+<p>Open a terminal/command prompt and type:</p>
+<pre><code class="language-unix">ollama
+</code></pre>
+<p>You should see Ollama startup with a help message indicating it’s running.</p>
+<p><img alt="ollama" src="/assets/build-your-local-ai/ollama-start.webp" /></p>
+<p><strong>3. Exploring Available Models</strong></p>
+<p>Ollama gives you access to many open-source models. You can browse available models at <a href="https://ollama.com/search">ollama.com/search</a>.</p>
+<p>When selecting a model, consider:</p>
+<ul>
+<li><strong>Model size</strong> (smaller models run faster but may be less capable)</li>
+<li><strong>Specialization</strong> (some models excel at coding, others at creative writing)</li>
+<li><strong>Memory requirements</strong> (larger models need more GPU memory)</li>
+</ul>
+<p>Check the <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard#/?official=true">HuggingFace Open LLM Leaderboard</a> for benchmarks and performance metrics. Use the advanced filters and metrics to find suitable models for your task.</p>
+<p><img alt="" src="/assets/build-your-local-ai/huggingface-open-leaderboard.webp" /></p>
+<blockquote>
+<p><em><strong>Pro tip</strong>: Start with smaller models (7B parameters or less) and move to larger ones only if needed. Many tasks can be handled effectively by smaller models, which run much faster.</em></p>
+</blockquote>
+<p><strong>4. Running Your First Model</strong>
+Let’s start with phi4-mini, a small but capable model:</p>
+<pre><code class="language-unix">ollama run phi4-mini
+</code></pre>
+<p>This will download the model (if it’s not already downloaded) and start an interactive chat session. Try asking it a question to verify everything is working.</p>
+<p>To exit the chat, type <code>/bye</code> or press Ctrl+D.</p>
+<p><img alt="ollama run phi4" src="../assets/build-your-local-ai/run-phi4.webp" /></p>
+<blockquote>
+<p><em><strong>Speed check</strong>: For a smooth experience, a good rule of thumb is that your model should output at least 10–20 words per second. If it’s much slower, you might try a smaller model or check if your GPU is properly utilized.</em></p>
+</blockquote>
+<p><img alt="" src="/assets/build-your-local-ai/too-slow.gif" /></p>
+<h6 style="text-align: center;">Too slow!.</h6>
+
+<p><img alt="alt text" src="/assets/build-your-local-ai/good-enoug-speed.gif" /></p>
+<h6 style="text-align: center;">Good enough!</h6>
+
+<p><strong>5. Check Your Installed Models</strong></p>
+<p>List all your installed models with:</p>
+<pre><code class="language-unix">ollama list
+</code></pre>
+<h2 id="installing-and-configuring-open-webui">Installing and Configuring Open WebUI</h2>
+<p>Now that Ollama is running, let’s install <a href="https://github.com/open-webui/open-webui">Open WebUI</a> to create a user-friendly interface.</p>
+<p><strong>1. Install Open WebUI</strong></p>
+<p>The easiest way to install Open WebUI is using pip:</p>
+<pre><code class="language-unix">pip install open-webui
+</code></pre>
+<p><strong>2. Start OpenWebUI</strong></p>
+<p>Make sure Ollama is running, then start Open WebUI with:</p>
+<pre><code class="language-unix">open-webui serve
+</code></pre>
+<p>TODO: add pic</p>
+<blockquote>
+<p><em>Note: Make sure that no other processes are using ports 8080 or 5173</em></p>
+</blockquote>
+<p><strong>3. Access the UI</strong></p>
+<p>Open your web browser and navigate to: <a href="http://localhost:8080/">http://localhost:8080/</a></p>
+<p>You should see the OpenWebUI interface welcoming you!</p>
+<p><strong>4. Interface Overview</strong></p>
+<p>Take a moment to familiarize yourself with the interface:</p>
+<ul>
+<li><strong>Chat Interface</strong>: The main area where you’ll interact with your AI</li>
+<li><strong>Models Menu</strong>: Select which model(s) to use</li>
+<li><strong>Chat Controls</strong>: Configure system prompts and model parameters</li>
+<li><strong>Settings</strong>: Access administrative features and customizations</li>
+</ul>
+<p>TODO: add pic</p>
+<blockquote>
+<p><em><strong>Pro tip</strong>: You can even use multiple models in a chat simultaneously to compare responses and aggregate their knowledge.</em></p>
+</blockquote>
+<p>TODO: add pic</p>
+<p><br/></p>
+<h2 id="basic-openwebui-functionality">Basic OpenWebUI Functionality</h2>
+<p>Let’s explore some of the powerful features of OpenWebUI.</p>
+<h3 id="enabling-web-search">Enabling Web Search</h3>
+<p>Web search allows your AI to access current information beyond its training data. OpenWebUI supports multiple search engines, giving you flexibility based on your needs. Here’s how to set it up:</p>
+<ol>
+<li>Go to Settings → Admin Panel → Web Search</li>
+<li>Enable web search and select your preferred search engine</li>
+</ol>
+<p>TODO: add pic</p>
+<p>I’ll focus on two popular options: Google PSE and Brave Search. Each has its advantages and disadvantages:</p>
+<h4 id="google-pse-api-setup">Google PSE API Setup</h4>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>King of search. Industry-leading search capabilities and relevance</li>
+<li>Generous free tier (10,000 requests per day)</li>
+<li>Comprehensive search results across the entire web</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Privacy concerns (Google processes your queries 😢)</li>
+<li>More complex setup process</li>
+</ul>
+<p><strong>Setup process:</strong></p>
+<p>For detailed instructions on how to set up Google PSE, please refer to the <a href="https://docs.openwebui.com/tutorials/web-search/google-pse/">Open WebUI documentation</a>.</p>
+<h4 id="brave-search-api">Brave Search API</h4>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Privacy-focused (doesn’t track your search queries)</li>
+<li>Independent search index (not relying on Google)</li>
+<li>Simple setup process</li>
+<li>Free tier available</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li>Limited to 2,000 free queries per month</li>
+<li>Search results may sometimes be less comprehensive than Google</li>
+</ul>
+<p><strong>Setup Process</strong>:</p>
+<ol>
+<li>Go to <a href="https://brave.com/search/api/">Brave Search API</a></li>
+<li>Sign up and verify your email</li>
+<li>
+<p>Navigate to the “Subscribe” tab and choose the free subscription (requires card information)</p>
+<blockquote>
+<p>TODO: add pic</p>
+</blockquote>
+</li>
+<li>
+<p>Go to the “API Keys” tab and create a new API key
+    &gt; TODO: add pic</p>
+</li>
+<li>
+<p>Copy the token and paste it into Open WebUI’s web search configuration</p>
+<blockquote>
+<p>TODO: add pic</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="test-search-functionality">Test Search Functionality</h3>
+<p>We can now test the search functionality by asking our AI agent for the weather forecast for this weekend.</p>
+<blockquote>
+<p>TODO: add pic</p>
+<p><em><strong>Note</strong>: Only enable web search when you need recent information or are researching topics outside the model’s knowledge, as it significantly slows down response time. For most general queries, the built-in knowledge of your model will be faster and sufficient.</em></p>
+</blockquote>
+<p><br/></p>
+<h3 id="code-interpreter">Code Interpreter</h3>
+<p>Open WebUI’s code interpreter transforms your AI assistant into a dynamic programming tool, enabling it to write and execute Python code directly within the chat interface.</p>
+<blockquote>
+<p><em><strong>Why This Matters</strong>: Your AI can now solve problems with code, demonstrate processes, and allow you to modify solutions interactively.</em></p>
+</blockquote>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Interactive Code Blocks</strong>: <em>View</em> and <em>edit</em> AI-generated code directly in your chat.</li>
+<li><strong>Multiple Executions</strong>: Run code multiple times with different inputs.</li>
+<li><strong>Real-time Feedback</strong>: Receive immediate results without switching platforms.</li>
+<li><strong>No Execution Limits</strong>: Enjoy unrestricted code execution without arbitrary limits.</li>
+</ul>
+<p>When you request a task that benefits from computational assistance, the AI recognizes the need for code execution and generates appropriate Python code that helps it answer your query. Just make sure to enable the ‘Code Interpreter’ option in your chat.</p>
+<p><strong>Enabling the Code Interpreter</strong>:</p>
+<ol>
+<li>Navigate to Settings → Admin Panel → Code Execution.</li>
+<li>Toggle the “Enable Code Interpreter” switch to <strong>On</strong>.</li>
+</ol>
+<blockquote>
+<p>TODO: add pic</p>
+</blockquote>
+<p><strong>Example Use Case:</strong></p>
+<p>Imagine you need to find the prime factorization of a large number. This task can be challenging for humans to perform quickly and accurately, and it can also be difficult for AI assistants. That’s why we seek the assistance of a computer to help with this task.</p>
+<p>Proompt:
+<code>what is the prime factors decomposition of 272894?</code></p>
+<p>Without Code Interpreter:</p>
+<blockquote>
+<p>TODO: add pic
+Headache-inducing, isn’t it?</p>
+</blockquote>
+<p>With Code Interpreter:</p>
+<blockquote>
+<p>TODO: add pic
+^_^</p>
+</blockquote>
+<p>The code interpreter fundamentally changes how you interact with your AI, transforming it from a conversational assistant into a computational powerhouse that can directly solve problems and demonstrate solutions. <em>This feature alone can justify the entire local setup process</em> for many users, especially those with data analysis, programming, or mathematics.</p>
+<p><br/></p>
+<h3 id="creating-a-basic-custom-model">Creating a Basic Custom Model</h3>
+<p>One of the most powerful features of Open WebUI is the ability to customize how your AI behaves. To unlock this feature:</p>
+<ol>
+<li>Go to Workspace → Models → Create New</li>
+<li>Select your model a name, and select a base model (e.g., phi4-mini)</li>
+<li>Customize its behaviour (e.g., by adding a system prompt guiding its behaviour)</li>
+</ol>
+<blockquote>
+<p>TODO: add pic</p>
+</blockquote>
+<p>For example, you could create a biology professor persona with this system prompt:</p>
+<pre><code>You are a university professor specialising in Biology with a passion for frogs-and you have a charming lisp in your speech. When interacting with users:
+
+- Answer biology-related queries with clear, factual, and detailed explanations, mainly focusing on frog topics.
+- Explain complex concepts using analogies drawn from everyday scenarios, making them easier to grasp.
+- If a user's question is ambiguous or unclear, ask clarifying questions before providing a complete answer.
+- Regularly quiz the user on key points to confirm understanding.
+- Propose various follow-up questions or alternative learning directions to encourage further discussion.
+- Maintain a friendly, engaging, and scholarly tone, ensuring your unique lisp is reflected in your speech.'
+</code></pre>
+<p>To get such wonderful AI assistant interactions:</p>
+<blockquote>
+<p>TODO : add pic</p>
+<p><em><strong>Pro tip</strong>: Create different model configurations for different tasks — one for brainstorming, another for coding, and yet another for detailed explanations.</em></p>
+</blockquote>
+<p><br /></p>
+<h2 id="conclusion-next-steps">Conclusion &amp; Next Steps</h2>
+<p>Congratulations! 🎉 You now have a fully functional local AI environment that gives you:</p>
+<ul>
+<li>Privacy (your data stays on your machine)</li>
+<li>Cost savings (no subscription fees)</li>
+<li>Fast responses</li>
+<li>Customizable AI assistants</li>
+</ul>
+<p>In just about an hour, you’ve set up an infrastructure that rivals commercial AI platforms, all while maintaining complete control over your data and experience.</p>
+<h3 id="what-weve-accomplished">What We’ve Accomplished</h3>
+<ul>
+<li>✅ Set up the required Python environment</li>
+<li>✅ Installed and configured Ollama</li>
+<li>✅ Installed and set up OpenWebUI</li>
+<li>✅ Enabled web search capabilities</li>
+<li>✅ Activated the code interpreter</li>
+<li>✅ Created a basic custom model</li>
+</ul>
+<h3 id="next-steps">Next Steps:</h3>
+<p>If you want to advance your project or learn more about Retrieval-Augmented Generation (RAG) and custom knowledge bases, check out the next article: "Open WebUI Tutorial — Supercharge Your Local AI with RAG and Custom Knowledge Bases". This guide walks you through the out-of-the-box RAG features in Open WebUI that require no coding. By the end of the tutorial, you’ll be able to build your own local documentation assistant.</p>
+<!-- 
+## Commands
+
+* `mkdocs new [dir-name]` - Create a new project.
+* `mkdocs serve` - Start the live-reloading docs server.
+* `mkdocs build` - Build the documentation site.
+* `mkdocs -h` - Print help message and exit.
+![alt text](https://miro.medium.com/v2/resize%3Afit%3A1400/format%3Awebp/1%2A3AsuQ6_6Jd5JxUaff31urw.gif)
+## Project layout
+
+    mkdocs.yml    # The configuration file.
+    docs/
+        index.md  # The documentation homepage.
+        ...       # Other markdown pages, images and other files. -->
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../open-webui-rag/" class="btn btn-neutral float-right" title="Supercharge Your Local AI with RAG and Custom Knowledge Bases">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../open-webui-rag/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
