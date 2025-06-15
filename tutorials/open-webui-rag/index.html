@@ -22,7 +22,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -31,11 +35,7 @@
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
           <a href="../.." class="icon icon-home"> phautelman
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
+        </a>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
@@ -47,7 +47,7 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" >Open WebUI</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../build-your-local-ai/">Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI</a>
+                <li class="toctree-l2"><a class="reference internal" href="../build-your-local-ai/build-your-local-ai/">Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI</a>
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Supercharge Your Local AI with RAG and Custom Knowledge Bases</a>
     <ul class="current">
@@ -506,7 +506,7 @@ AI pipeline for processing documents into Obsidian format: https://github.com/pa
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../build-your-local-ai/" class="btn btn-neutral float-left" title="Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../build-your-local-ai/build-your-local-ai/" class="btn btn-neutral float-left" title="Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../open-webui-action-tools/" class="btn btn-neutral float-right" title="Beyond Text. Equipping Your Open WebUI AI with Action Tools">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -530,7 +530,7 @@ AI pipeline for processing documents into Obsidian format: https://github.com/pa
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../build-your-local-ai/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../build-your-local-ai/build-your-local-ai/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../open-webui-action-tools/" style="color: #fcfcfc">Next &raquo;</a></span>
@@ -541,12 +541,12 @@ AI pipeline for processing documents into Obsidian format: https://github.com/pa
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
-      <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>
