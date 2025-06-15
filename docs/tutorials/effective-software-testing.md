@@ -4,8 +4,7 @@ Effective and systematic software testing is critical for ensuring the reliabili
 
 The goal is to help developers understand the importance of proper testing, how to approach it systematically, and how to implement it effectively in their projects.
 
-<br/>
-
+---
 ## Why Testing is Important
 
 **Quality Assurance**: Testing is essential because software failures can have severe consequences for businesses and end-users. Developers bear responsibility for the quality of the software they produce.
@@ -18,8 +17,7 @@ The goal is to help developers understand the importance of proper testing, how 
 
 **Confidence in Changes**: A comprehensive test suite gives developers confidence to make changes or add new features, knowing that existing functionality can be quickly verified.
 
-<br/>
-
+---
 ## The Testing Pyramid
 
 ### Unit Testing
@@ -43,8 +41,7 @@ The goal is to help developers understand the importance of proper testing, how 
 - **System Tests**: For critical workflows and high-risk areas of the application
 
 
-<br/>
-
+---
 ## Specification-Based Testing
 
 Specification-based testing derives test cases from the software's requirements, ensuring the code meets its intended functionality.
@@ -86,8 +83,7 @@ Consider a user registration function with a username and password:
 
 **Augment with Experience**: We might know from experience that users may attempt to use symbols in their passwords that could pose security risks (e.g., backticks (`), pipe (|), angle brackets (<, >), etc.). Test cases should be added to ensure that passwords containing such characters are deemed invalid.
 
-<br/>
-
+---
 ## Structural Testing and Code Coverage
 
 Structural testing, also known as white-box testing, involves testing the internal structure of the code to ensure thorough coverage of all its components. Unlike specification-based (black-box) testing, which focuses on functional requirements, structural testing delves into the code to ensure that all paths, branches, and conditions are adequately tested.
@@ -178,8 +174,7 @@ Use this calculator to find minimal test cases needed to achieve MC/DC coverage:
 
 **Using Source Code for Structural Testing**: The source code is valuable for identifying test cases that may not be evident from the requirements alone. Structural testing leverages the code to uncover potential issues that specification-based testing might miss.
 
-<br/>
-
+---
 ## Designing Contracts
 
 Designing contracts is a crucial aspect of software development that helps ensure the reliability and correctness of complex systems. This section will explore the concept of contracts, including pre-conditions, post-conditions, and invariants, and how they differ from validation.
@@ -262,14 +257,12 @@ To handle this restriction:
 
 By implementing contracts, we can catch errors early, improve code reliability, and make the system's behaviour more predictable and maintainable.
 
-<br/>
-
+---
 ## Property-Based Testing
 
 *[TODO]*
 
-<br/>
-
+---
 ## Test Doubles and Mocks
 
 In software development, classes often depend on other classes to perform their functions. While testing multiple classes together can be desirable, testing a unit in isolation is frequently necessary without relying on its dependencies. This is where test doubles come into play.
@@ -497,8 +490,7 @@ Test doubles and mocks are powerful tools for creating effective unit tests. By 
 
 By incorporating these advanced techniques and design principles, you can create more robust and flexible tests. *Remember that the goal is not just to increase test coverage but to improve the overall design and reliability of our software.*
 
-<br/>
-
+---
 ## Test-Driven Development
 
 Test-driven development (TDD) is a software development methodology in which tests are written before the actual code implementation. This approach inverts the traditional development process, where code is typically implemented first and tested later. TDD emphasizes writing automated test cases for each piece of functionality before writing the code to implement that functionality.
@@ -583,7 +575,8 @@ public int[] twoSum(int[] nums, int target) {
 }
 ```
 
-#### 🔴 Red Phase
+**🔴 Red Phase**
+
 Let's start by devising test cases that check the method constraints.
 ```java
 import org.example.Main;
@@ -651,7 +644,8 @@ public class MainTest {
 This first test forces us to define what should happen if the input is invalid, a case not specified in the method requirements. We decided to throw an `IllegalArgumentException`.
 
 
-#### 🟢 Green Phase
+**🟢 Green Phase**
+
 Implementing the solution is straightforward. We only need to add the method preconditions.
 ```java
 public int[] twoSum(int[] nums, int target) {
@@ -669,12 +663,14 @@ public int[] twoSum(int[] nums, int target) {
 }
 ```
 
-#### ⚫ Refactor Phase
+**⚫ Refactor Phase**
+
 For refactoring, one could consider extracting the validation checks to a separate method, but we will not do that as the method is not too complex yet.
 
 *The process continues iteratively:*
 
-#### 🔴 Red Phase (Next Cycle)
+**🔴 Red Phase (Next Cycle)**
+
 In the next cycle, we'll extend the test suite to verify that the method actually outputs the correct values.
 ```java
 static Stream<Arguments> correctValuesAndOutputProvider() {
@@ -727,7 +723,8 @@ static Stream<Arguments> correctValuesAndOutputProvider() {
  }
 ```
 
-#### 🟢 Green Phase
+**🟢 Green Phase**
+
 Implementing the solution that passes the tests.
 ```java
 public int[] twoSum(int[] nums, int target) {
@@ -758,10 +755,12 @@ public int[] twoSum(int[] nums, int target) {
 }
 ```
 
-#### ⚫ Refactor Phase
+**⚫ Refactor Phase**
+
 😛😛
 
-#### 🔴 Red Phase (Final Cycle)
+**🔴 Red Phase (Final Cycle)**
+
 Next, let's test the case where the method can't find a result.
 ```java
 @Test
@@ -773,7 +772,8 @@ void twoSum_correctInput_cantFindResult() {
 }
 ```
 
-#### 🟢 Green Phase
+**🟢 Green Phase**
+
 Updating the implementation to handle this case.
 ```java
 public int[] twoSum(int[] nums, int target) {
@@ -802,7 +802,8 @@ public int[] twoSum(int[] nums, int target) {
 }
 ```
 
-#### ⚫ Final Refactor
+**⚫ Final Refactor**
+
 Now, the method meets the expected functionality. We could consider rewriting the nested loop, adding post-conditions, or improving the method runtime (`O(n)` is possible) for further refactoring. These are left as exercises for the reader.
 ```java
 TODO
@@ -813,6 +814,7 @@ TODO
 
 *[TODO]*
 
+---
 ## Test Code Quality
 
 *[TODO]*

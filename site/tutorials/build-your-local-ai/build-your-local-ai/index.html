@@ -1,144 +1,1008 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI - phautelman</title>
-    <link rel="stylesheet" href="../../../css/theme.css" />
-    <link rel="stylesheet" href="../../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama \u0026 Open WebUI";
-        var mkdocs_page_input_path = "tutorials/build-your-local-ai/build-your-local-ai.md";
-        var mkdocs_page_url = null;
-      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../..">
+      
+      
+        <link rel="next" href="../../open-webui-rag/open-webui-rag/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
-    <!--[if lt IE 9]>
-      <script src="../../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
- <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    
+      
+        <title>Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI - phautelman</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../../.." class="icon icon-home"> phautelman
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#build-your-local-ai-from-zero-to-a-custom-chatgpt-interface-with-ollama-open-webui" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
-                </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Tutorials</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" >Open WebUI</a>
-    <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#toolstack-overview">Toolstack Overview</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#ollama">Ollama</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#openwebui">OpenWebUI</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#environment-setup">Environment Setup</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#setting-up-python-311">Setting Up Python 3.11</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#installing-and-configuring-ollama">Installing and Configuring Ollama</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#installing-and-configuring-open-webui">Installing and Configuring Open WebUI</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#basic-openwebui-functionality">Basic OpenWebUI Functionality</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#enabling-web-search">Enabling Web Search</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#test-search-functionality">Test Search Functionality</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#code-interpreter">Code Interpreter</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#creating-a-basic-custom-model">Creating a Basic Custom Model</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#conclusion-next-steps">Conclusion &amp; Next Steps</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#what-weve-accomplished">What We’ve Accomplished</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps:</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../open-webui-rag/">Supercharge Your Local AI with RAG and Custom Knowledge Bases</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../open-webui-action-tools/">Beyond Text. Equipping Your Open WebUI AI with Action Tools</a>
-                </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >Software</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../effective-software-testing/">Effective Software Testing</a>
-                </li>
-    </ul>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Software Tools</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="https://pahautelman.github.io/mcdc-calculator/">MC/DC Calculator</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="https://pahautelman.github.io/interactive-fish-cluser/">Interactive Fish Cluster</a>
-                  </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="phautelman" class="md-header__button md-logo" aria-label="phautelman" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            phautelman
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../..">phautelman</a>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Tutorials</li>
-          <li class="breadcrumb-item">Open WebUI</li>
-      <li class="breadcrumb-item active">Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI</li>
-    <li class="wy-breadcrumbs-aside">
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <h1 id="build-your-local-ai-from-zero-to-a-custom-chatgpt-interface-with-ollama-open-webui">Build Your Local AI: From Zero to a Custom ChatGPT Interface with Ollama &amp; Open WebUI</h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="phautelman" class="md-nav__button md-logo" aria-label="phautelman" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    phautelman
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Open WebUI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Open WebUI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#toolstack-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Toolstack Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Toolstack Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ollama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ollama
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openwebui" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenWebUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-python-311" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up Python 3.11
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up Python 3.11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-macos-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      For macOS users:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-configuring-ollama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing and Configuring Ollama
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-configuring-open-webui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing and Configuring Open WebUI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-openwebui-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic OpenWebUI Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic OpenWebUI Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabling-web-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling Web Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enabling Web Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-pse-api-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google PSE API Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brave-search-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Brave Search API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-search-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Search Functionality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-interpreter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Interpreter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-basic-custom-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Basic Custom Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion &amp; Next Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclusion &amp; Next Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-weve-accomplished" class="md-nav__link">
+    <span class="md-ellipsis">
+      What We’ve Accomplished
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../open-webui-rag/open-webui-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supercharge Your Local AI with RAG and Custom Knowledge Bases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../open-webui-action-tools/open-webui-action-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Beyond Text. Equipping Your Open WebUI AI with Action Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../effective-software-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Effective Software Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Software Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pahautelman.github.io/mcdc-calculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MC/DC Calculator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pahautelman.github.io/interactive-fish-cluser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interactive Fish Cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#toolstack-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Toolstack Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Toolstack Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ollama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ollama
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openwebui" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenWebUI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-python-311" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up Python 3.11
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up Python 3.11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-macos-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      For macOS users:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-configuring-ollama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing and Configuring Ollama
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-configuring-open-webui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing and Configuring Open WebUI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-openwebui-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic OpenWebUI Functionality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic OpenWebUI Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabling-web-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling Web Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enabling Web Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-pse-api-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google PSE API Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brave-search-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Brave Search API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-search-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Search Functionality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-interpreter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Interpreter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-basic-custom-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Basic Custom Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion &amp; Next Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclusion &amp; Next Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-weve-accomplished" class="md-nav__link">
+    <span class="md-ellipsis">
+      What We’ve Accomplished
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="build-your-local-ai-from-zero-to-a-custom-chatgpt-interface-with-ollama-open-webui">Build Your Local AI: From Zero to a Custom ChatGPT Interface with Ollama &amp; Open WebUI</h1>
+<p><a class="glightbox" href="../openwebui-frog-master.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-frog-master.webp" /></a></p>
 <p>Imagine having ChatGPT or DeepSeek-like capabilities right on your computer — no subscription fees, no privacy concerns, no waiting for responses, and complete customization options. Sounds too good to be true? <strong>It’s not!</strong></p>
-<p>Large Language Models (LLMs) have become indispensable tools for many of us. Whether you’re using them to process text, learn new concepts, generate code solutions, automate workflows, or enjoy chatting with your computer buddy — they’re changing how we work and create.</p>
 <p>Large Language Models (LLMs) have become indispensable tools for many of us. Whether you’re using them to process text, learn new concepts, generate code solutions, automate workflows, or enjoy chatting with your computer buddy — they’re changing how we work and create.</p>
 <p>But there’s a catch with popular services like OpenAI, Anthropic, or Perplexity: they often come with limitations:</p>
 <ul>
@@ -269,12 +1133,18 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <blockquote>
 <p><em><strong>Speed check</strong>: For a smooth experience, a good rule of thumb is that your model should output at least 10–20 words per second. If it’s much slower, you might try a smaller model or check if your GPU is properly utilized.</em></p>
 </blockquote>
-<p><a class="glightbox" href="/assets/build-your-local-ai/too-slow.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="/assets/build-your-local-ai/too-slow.gif" /></a></p>
-<h6 style="text-align: center;">Too slow!.</h6>
-
-<p><a class="glightbox" href="/assets/build-your-local-ai/good-enoug-speed.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="/assets/build-your-local-ai/good-enoug-speed.gif" /></a></p>
-<h6 style="text-align: center;">Good enough!</h6>
-
+<figure>
+    <a class="glightbox" href="../too-slow.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../too-slow.gif" /></a>
+    <figcaption style="text-align: center; margin-top:0.5em;">
+    Too slow!
+    </figcaption>
+</figure>
+<figure>
+    <a class="glightbox" href="../good-enoug-speed.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../good-enoug-speed.gif" /></a>
+    <figcaption style="text-align: center; margin-top:0.5em;">
+    Good enough!
+    </figcaption>
+</figure>
 <p><strong>5. Check Your Installed Models</strong></p>
 <p>List all your installed models with:</p>
 <pre><code class="language-unix">ollama list
@@ -289,7 +1159,7 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <p>Make sure Ollama is running, then start Open WebUI with:</p>
 <pre><code class="language-unix">open-webui serve
 </code></pre>
-<p>TODO: add pic</p>
+<p><a class="glightbox" href="../openwebui-serve.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="open-webui-serve" src="../openwebui-serve.webp" /></a></p>
 <blockquote>
 <p><em>Note: Make sure that no other processes are using ports 8080 or 5173</em></p>
 </blockquote>
@@ -304,11 +1174,11 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <li><strong>Chat Controls</strong>: Configure system prompts and model parameters</li>
 <li><strong>Settings</strong>: Access administrative features and customizations</li>
 </ul>
-<p>TODO: add pic</p>
+<p><a class="glightbox" href="../openwebui-settings.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-settings.webp" /></a></p>
 <blockquote>
 <p><em><strong>Pro tip</strong>: You can even use multiple models in a chat simultaneously to compare responses and aggregate their knowledge.</em></p>
 </blockquote>
-<p>TODO: add pic</p>
+<p><a class="glightbox" href="../openwebui-multi-response.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-multi-response.webp" /></a></p>
 <p><br/></p>
 <h2 id="basic-openwebui-functionality">Basic OpenWebUI Functionality</h2>
 <p>Let’s explore some of the powerful features of OpenWebUI.</p>
@@ -318,7 +1188,7 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <li>Go to Settings → Admin Panel → Web Search</li>
 <li>Enable web search and select your preferred search engine</li>
 </ol>
-<p>TODO: add pic</p>
+<p><a class="glightbox" href="../openwebui-enable-search.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-enable-search.gif" /></a></p>
 <p>I’ll focus on two popular options: Google PSE and Brave Search. Each has its advantages and disadvantages:</p>
 <h4 id="google-pse-api-setup">Google PSE API Setup</h4>
 <p><strong>Advantages:</strong></p>
@@ -353,25 +1223,21 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <li>Sign up and verify your email</li>
 <li>
 <p>Navigate to the “Subscribe” tab and choose the free subscription (requires card information)</p>
-<blockquote>
-<p>TODO: add pic</p>
-</blockquote>
+<p><a class="glightbox" href="../brave-browser-plans.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../brave-browser-plans.webp" /></a></p>
 </li>
 <li>
-<p>Go to the “API Keys” tab and create a new API key
-    &gt; TODO: add pic</p>
+<p>Go to the “API Keys” tab and create a new API key</p>
+<p><a class="glightbox" href="../brave-browser-api-keys.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../brave-browser-api-keys.webp" /></a></p>
 </li>
 <li>
 <p>Copy the token and paste it into Open WebUI’s web search configuration</p>
-<blockquote>
-<p>TODO: add pic</p>
-</blockquote>
+<p><a class="glightbox" href="../openwebui-use-brave-api.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-use-brave-api.webp" /></a></p>
 </li>
 </ol>
 <h3 id="test-search-functionality">Test Search Functionality</h3>
 <p>We can now test the search functionality by asking our AI agent for the weather forecast for this weekend.</p>
+<p><a class="glightbox" href="../openwebui-search-func.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-search-func.webp" /></a></p>
 <blockquote>
-<p>TODO: add pic</p>
 <p><em><strong>Note</strong>: Only enable web search when you need recent information or are researching topics outside the model’s knowledge, as it significantly slows down response time. For most general queries, the built-in knowledge of your model will be faster and sufficient.</em></p>
 </blockquote>
 <p><br/></p>
@@ -393,23 +1259,25 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <li>Navigate to Settings → Admin Panel → Code Execution.</li>
 <li>Toggle the “Enable Code Interpreter” switch to <strong>On</strong>.</li>
 </ol>
-<blockquote>
-<p>TODO: add pic</p>
-</blockquote>
+<p><a class="glightbox" href="../openwebui-enable-interpreter.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-enable-interpreter.gif" /></a></p>
 <p><strong>Example Use Case:</strong></p>
 <p>Imagine you need to find the prime factorization of a large number. This task can be challenging for humans to perform quickly and accurately, and it can also be difficult for AI assistants. That’s why we seek the assistance of a computer to help with this task.</p>
 <p>Proompt:
 <code>what is the prime factors decomposition of 272894?</code></p>
 <p>Without Code Interpreter:</p>
-<blockquote>
-<p>TODO: add pic
-Headache-inducing, isn’t it?</p>
-</blockquote>
+<figure>
+    <a class="glightbox" href="../openwebui-without-interpreter.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-without-interpreter.webp" /></a>
+    <figcaption style="text-align: center; margin-top:0.5em;">
+    Headache-inducing, isn’t it?
+    </figcaption>
+</figure>
 <p>With Code Interpreter:</p>
-<blockquote>
-<p>TODO: add pic
-^_^</p>
-</blockquote>
+<figure>
+    <a class="glightbox" href="../openwebui-with-interpreter.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-with-interpreter.webp" /></a>
+    <figcaption style="text-align: center; margin-top:0.5em;">
+    ^_^
+    </figcaption>
+</figure>
 <p>The code interpreter fundamentally changes how you interact with your AI, transforming it from a conversational assistant into a computational powerhouse that can directly solve problems and demonstrate solutions. <em>This feature alone can justify the entire local setup process</em> for many users, especially those with data analysis, programming, or mathematics.</p>
 <p><br/></p>
 <h3 id="creating-a-basic-custom-model">Creating a Basic Custom Model</h3>
@@ -419,11 +1287,9 @@ Headache-inducing, isn’t it?</p>
 <li>Select your model a name, and select a base model (e.g., phi4-mini)</li>
 <li>Customize its behaviour (e.g., by adding a system prompt guiding its behaviour)</li>
 </ol>
-<blockquote>
-<p>TODO: add pic</p>
-</blockquote>
+<p><a class="glightbox" href="../openwebui-custom-model.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-custom-model.gif" /></a></p>
 <p>For example, you could create a biology professor persona with this system prompt:</p>
-<pre><code>You are a university professor specialising in Biology with a passion for frogs-and you have a charming lisp in your speech. When interacting with users:
+<pre><code class="language-txt">You are a university professor specialising in Biology with a passion for frogs-and you have a charming lisp in your speech. When interacting with users:
 
 - Answer biology-related queries with clear, factual, and detailed explanations, mainly focusing on frog topics.
 - Explain complex concepts using analogies drawn from everyday scenarios, making them easier to grasp.
@@ -433,8 +1299,8 @@ Headache-inducing, isn’t it?</p>
 - Maintain a friendly, engaging, and scholarly tone, ensuring your unique lisp is reflected in your speech.'
 </code></pre>
 <p>To get such wonderful AI assistant interactions:</p>
+<p><a class="glightbox" href="../openwebui-custom-model-reply.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-custom-model-reply.webp" /></a></p>
 <blockquote>
-<p>TODO : add pic</p>
 <p><em><strong>Pro tip</strong>: Create different model configurations for different tasks — one for brainstorming, another for coding, and yet another for detailed explanations.</em></p>
 </blockquote>
 <p><br /></p>
@@ -472,51 +1338,61 @@ Headache-inducing, isn’t it?</p>
     docs/
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files. -->
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../open-webui-rag/" class="btn btn-neutral float-right" title="Supercharge Your Local AI with RAG and Custom Knowledge Bases">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-      <span><a href="../../.." style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../open-webui-rag/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-    <script src="../../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../../..";</script>
-    <script src="../../../js/theme_extra.js"></script>
-    <script src="../../../js/theme.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
 </script></body>
 </html>

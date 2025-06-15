@@ -4,15 +4,29 @@ nav:
   - Tutorials:
     - Open WebUI:
       - Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI: tutorials/build-your-local-ai/build-your-local-ai.md
-      - Supercharge Your Local AI with RAG and Custom Knowledge Bases: tutorials/open-webui-rag.md 
-      - Beyond Text. Equipping Your Open WebUI AI with Action Tools: tutorials/open-webui-action-tools.md
+      - Supercharge Your Local AI with RAG and Custom Knowledge Bases: tutorials/open-webui-rag/open-webui-rag.md 
+      - Beyond Text. Equipping Your Open WebUI AI with Action Tools: tutorials/open-webui-action-tools/open-webui-action-tools.md
     - Software:
       - Effective Software Testing: tutorials/effective-software-testing.md
   - Software Tools:
     - MC/DC Calculator: https://pahautelman.github.io/mcdc-calculator/
     - Interactive Fish Cluster: https://pahautelman.github.io/interactive-fish-cluser/
 theme: 
-  name: readthedocs
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
 markdown_extensions:
   - attr_list
   - md_in_html

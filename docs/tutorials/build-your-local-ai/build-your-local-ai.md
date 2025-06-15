@@ -6,8 +6,6 @@ Imagine having ChatGPT or DeepSeek-like capabilities right on your computer — 
 
 Large Language Models (LLMs) have become indispensable tools for many of us. Whether you’re using them to process text, learn new concepts, generate code solutions, automate workflows, or enjoy chatting with your computer buddy — they’re changing how we work and create.
 
-Large Language Models (LLMs) have become indispensable tools for many of us. Whether you’re using them to process text, learn new concepts, generate code solutions, automate workflows, or enjoy chatting with your computer buddy — they’re changing how we work and create.
-
 But there’s a catch with popular services like OpenAI, Anthropic, or Perplexity: they often come with limitations:
 
 * **Cost**: Monthly subscriptions or per-token pricing can add up quickly 
@@ -28,12 +26,11 @@ But there’s a catch with popular services like OpenAI, Anthropic, or Perplexit
 
 > *Personal note: I've been using this setup for two months, and it has cut my monthly AI subscription costs to zero while increasing my productivity. The initial setup time is worth every minute for the long-term benefits.*
 
-<br/>
 
 ## Toolstack Overview
 Our local AI setup will use two primary tools:
 
-#### Ollama
+### Ollama
 [Ollama](https://github.com/ollama/ollama) is an open-source framework designed specifically for running LLMs locally. It provides:
 
 * Access to a wide variety of open-source models (DeepSeek, Llama, Phi, Mistral, Gemma, and many more)
@@ -42,7 +39,7 @@ Our local AI setup will use two primary tools:
 * Efficient model management
 
 
-#### OpenWebUI
+### OpenWebUI
 [OpenWebUI](https://github.com/open-webui/open-webui) is currently the most prominent open-source project offering a UI interface for your Ollama instance. Think of it as your local version of the ChatGPT or Claude interface, but with even more features:
 
 * User-friendly chat interface
@@ -55,7 +52,7 @@ Our local AI setup will use two primary tools:
 
 The best part? OpenWebUI is constantly improving as passionate engineers contribute to this open-source project, bringing features from proprietary platforms to this free alternative.
 
-#### Requirements
+### Requirements
 Before we start, make sure your system meets these minimum requirements:
 
 * A GPU-powered laptop or desktop (minimum 4GB GPU memory, 8GB+ recommended)
@@ -64,10 +61,9 @@ Before we start, make sure your system meets these minimum requirements:
 
 > ***Pro tip:** While CPU-only setups technically work, they’ll be significantly slower. Even a modest GPU will greatly improve your experience.*
 
-<br/>
 
 ## Environment Setup
-#### Setting Up Python 3.11
+### Setting Up Python 3.11
 Ollama and OpenWebUI work best with Python 3.11, so we’ll start by making sure we have the correct version installed.
 
 First, check your current Python version:
@@ -81,8 +77,10 @@ python --version
 *If you don’t have Python 3.11*, we’ll install it using [pyenv](https://github.com/pyenv/pyenv), an excellent tool for managing multiple Python versions:
 
 > ***Note**: Visit the [pyenv GitHub repository](https://github.com/pyenv/pyenv) for detailed installation instructions specific to your OS.*
+  
 
-##### For macOS users:
+#### For macOS users:
+
 **1. Install pyenv**
 
 ```unix
@@ -136,7 +134,7 @@ Now that we have our Python environment ready let’s install [Ollama](https://g
 
 **1. Download and Install Ollama**
 
-> Visit the Ollama GitHub page and follow the installation instructions for your OS.
+> ***Note:** Visit the Ollama GitHub page and follow the installation instructions for your OS.*
 
 *For macOS users*, download the .zip package from the Ollama official repository, unzip the file and install it by clicking the ‘Ollama’ application file.
 
@@ -188,7 +186,7 @@ To exit the chat, type `/bye` or press Ctrl+D.
 
 <figure markdown="span">
     ![](too-slow.gif)
-    <figcaption style="text-align: center; margin-top:0.5em;">
+    <figcaption style="margin-top:0.5em;">
     Too slow!
     </figcaption>
 </figure>
@@ -253,7 +251,6 @@ Take a moment to familiarize yourself with the interface:
 
 ![](openwebui-multi-response.webp)
 
-<br/>
 
 ## Basic OpenWebUI Functionality
 
@@ -328,7 +325,6 @@ We can now test the search functionality by asking our AI agent for the weather 
 
 > ***Note**: Only enable web search when you need recent information or are researching topics outside the model’s knowledge, as it significantly slows down response time. For most general queries, the built-in knowledge of your model will be faster and sufficient.*
 
-<br/>
 
 ### Code Interpreter
 
@@ -380,7 +376,6 @@ With Code Interpreter:
 
 The code interpreter fundamentally changes how you interact with your AI, transforming it from a conversational assistant into a computational powerhouse that can directly solve problems and demonstrate solutions. *This feature alone can justify the entire local setup process* for many users, especially those with data analysis, programming, or mathematics.
 
-<br/>
 
 ### Creating a Basic Custom Model
 
@@ -411,7 +406,6 @@ To get such wonderful AI assistant interactions:
 
 > ***Pro tip**: Create different model configurations for different tasks — one for brainstorming, another for coding, and yet another for detailed explanations.*
 
-<br />
 
 ## Conclusion & Next Steps
 
@@ -433,7 +427,7 @@ In just about an hour, you’ve set up an infrastructure that rivals commercial 
 * ✅ Activated the code interpreter
 * ✅ Created a basic custom model
 
-### Next Steps:
+### Next Steps
 
 If you want to advance your project or learn more about Retrieval-Augmented Generation (RAG) and custom knowledge bases, check out the next article: "Open WebUI Tutorial — Supercharge Your Local AI with RAG and Custom Knowledge Bases". This guide walks you through the out-of-the-box RAG features in Open WebUI that require no coding. By the end of the tutorial, you’ll be able to build your own local documentation assistant.
 
