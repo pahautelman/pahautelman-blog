@@ -26,6 +26,9 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
       
 
 
@@ -62,7 +65,14 @@
     body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -113,6 +123,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -510,7 +546,7 @@
           <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      Next Steps:
+      Next Steps
     </span>
   </a>
   
@@ -973,7 +1009,7 @@
           <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      Next Steps:
+      Next Steps
     </span>
   </a>
   
@@ -1024,10 +1060,9 @@
 <blockquote>
 <p><em>Personal note: I've been using this setup for two months, and it has cut my monthly AI subscription costs to zero while increasing my productivity. The initial setup time is worth every minute for the long-term benefits.</em></p>
 </blockquote>
-<p><br/></p>
 <h2 id="toolstack-overview">Toolstack Overview</h2>
 <p>Our local AI setup will use two primary tools:</p>
-<h4 id="ollama">Ollama</h4>
+<h3 id="ollama">Ollama</h3>
 <p><a href="https://github.com/ollama/ollama">Ollama</a> is an open-source framework designed specifically for running LLMs locally. It provides:</p>
 <ul>
 <li>Access to a wide variety of open-source models (DeepSeek, Llama, Phi, Mistral, Gemma, and many more)</li>
@@ -1035,7 +1070,7 @@
 <li>Multimodal support (for models that can process images)</li>
 <li>Efficient model management</li>
 </ul>
-<h4 id="openwebui">OpenWebUI</h4>
+<h3 id="openwebui">OpenWebUI</h3>
 <p><a href="https://github.com/open-webui/open-webui">OpenWebUI</a> is currently the most prominent open-source project offering a UI interface for your Ollama instance. Think of it as your local version of the ChatGPT or Claude interface, but with even more features:</p>
 <ul>
 <li>User-friendly chat interface</li>
@@ -1047,7 +1082,7 @@
 <li>And many more features are being actively developed</li>
 </ul>
 <p>The best part? OpenWebUI is constantly improving as passionate engineers contribute to this open-source project, bringing features from proprietary platforms to this free alternative.</p>
-<h4 id="requirements">Requirements</h4>
+<h3 id="requirements">Requirements</h3>
 <p>Before we start, make sure your system meets these minimum requirements:</p>
 <ul>
 <li>A GPU-powered laptop or desktop (minimum 4GB GPU memory, 8GB+ recommended)</li>
@@ -1057,9 +1092,8 @@
 <blockquote>
 <p><em><strong>Pro tip:</strong> While CPU-only setups technically work, they’ll be significantly slower. Even a modest GPU will greatly improve your experience.</em></p>
 </blockquote>
-<p><br/></p>
 <h2 id="environment-setup">Environment Setup</h2>
-<h4 id="setting-up-python-311">Setting Up Python 3.11</h4>
+<h3 id="setting-up-python-311">Setting Up Python 3.11</h3>
 <p>Ollama and OpenWebUI work best with Python 3.11, so we’ll start by making sure we have the correct version installed.</p>
 <p>First, check your current Python version:</p>
 <pre><code class="language-unix">python --version
@@ -1069,7 +1103,7 @@
 <blockquote>
 <p><em><strong>Note</strong>: Visit the <a href="https://github.com/pyenv/pyenv">pyenv GitHub repository</a> for detailed installation instructions specific to your OS.</em></p>
 </blockquote>
-<h5 id="for-macos-users">For macOS users:</h5>
+<h4 id="for-macos-users">For macOS users:</h4>
 <p><strong>1. Install pyenv</strong></p>
 <pre><code class="language-unix">brew update
 brew install pyenv
@@ -1100,7 +1134,7 @@ eval &quot;$(pyenv init -)&quot;
 <p>Now that we have our Python environment ready let’s install <a href="https://github.com/ollama/ollama">Ollama</a>:</p>
 <p><strong>1. Download and Install Ollama</strong></p>
 <blockquote>
-<p>Visit the Ollama GitHub page and follow the installation instructions for your OS.</p>
+<p><em><strong>Note:</strong> Visit the Ollama GitHub page and follow the installation instructions for your OS.</em></p>
 </blockquote>
 <p><em>For macOS users</em>, download the .zip package from the Ollama official repository, unzip the file and install it by clicking the ‘Ollama’ application file.</p>
 <p><a class="glightbox" href="../download-ollama.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../download-ollama.webp" /></a></p>
@@ -1135,7 +1169,7 @@ Let’s start with phi4-mini, a small but capable model:</p>
 </blockquote>
 <figure>
     <a class="glightbox" href="../too-slow.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../too-slow.gif" /></a>
-    <figcaption style="text-align: center; margin-top:0.5em;">
+    <figcaption style="margin-top:0.5em;">
     Too slow!
     </figcaption>
 </figure>
@@ -1179,7 +1213,6 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <p><em><strong>Pro tip</strong>: You can even use multiple models in a chat simultaneously to compare responses and aggregate their knowledge.</em></p>
 </blockquote>
 <p><a class="glightbox" href="../openwebui-multi-response.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-multi-response.webp" /></a></p>
-<p><br/></p>
 <h2 id="basic-openwebui-functionality">Basic OpenWebUI Functionality</h2>
 <p>Let’s explore some of the powerful features of OpenWebUI.</p>
 <h3 id="enabling-web-search">Enabling Web Search</h3>
@@ -1240,7 +1273,6 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <blockquote>
 <p><em><strong>Note</strong>: Only enable web search when you need recent information or are researching topics outside the model’s knowledge, as it significantly slows down response time. For most general queries, the built-in knowledge of your model will be faster and sufficient.</em></p>
 </blockquote>
-<p><br/></p>
 <h3 id="code-interpreter">Code Interpreter</h3>
 <p>Open WebUI’s code interpreter transforms your AI assistant into a dynamic programming tool, enabling it to write and execute Python code directly within the chat interface.</p>
 <blockquote>
@@ -1279,7 +1311,6 @@ Let’s start with phi4-mini, a small but capable model:</p>
     </figcaption>
 </figure>
 <p>The code interpreter fundamentally changes how you interact with your AI, transforming it from a conversational assistant into a computational powerhouse that can directly solve problems and demonstrate solutions. <em>This feature alone can justify the entire local setup process</em> for many users, especially those with data analysis, programming, or mathematics.</p>
-<p><br/></p>
 <h3 id="creating-a-basic-custom-model">Creating a Basic Custom Model</h3>
 <p>One of the most powerful features of Open WebUI is the ability to customize how your AI behaves. To unlock this feature:</p>
 <ol>
@@ -1303,7 +1334,6 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <blockquote>
 <p><em><strong>Pro tip</strong>: Create different model configurations for different tasks — one for brainstorming, another for coding, and yet another for detailed explanations.</em></p>
 </blockquote>
-<p><br /></p>
 <h2 id="conclusion-next-steps">Conclusion &amp; Next Steps</h2>
 <p>Congratulations! 🎉 You now have a fully functional local AI environment that gives you:</p>
 <ul>
@@ -1322,7 +1352,7 @@ Let’s start with phi4-mini, a small but capable model:</p>
 <li>✅ Activated the code interpreter</li>
 <li>✅ Created a basic custom model</li>
 </ul>
-<h3 id="next-steps">Next Steps:</h3>
+<h3 id="next-steps">Next Steps</h3>
 <p>If you want to advance your project or learn more about Retrieval-Augmented Generation (RAG) and custom knowledge bases, check out the next article: "Open WebUI Tutorial — Supercharge Your Local AI with RAG and Custom Knowledge Bases". This guide walks you through the out-of-the-box RAG features in Open WebUI that require no coding. By the end of the tutorial, you’ll be able to build your own local documentation assistant.</p>
 <!-- 
 ## Commands

@@ -24,6 +24,9 @@
     
       <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
       
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
       
 
 
@@ -60,7 +63,14 @@
     body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -69,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#greeting" class="md-skip">
+        <a href="#welcome-to-my-digital-space" class="md-skip">
           Skip to content
         </a>
       
@@ -111,6 +121,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -170,6 +206,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -181,6 +230,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      About Me
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-drives-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Drives Me
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-find-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You'll Find Here
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Let's Connect
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -526,6 +630,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      About Me
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-drives-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Drives Me
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-find-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You'll Find Here
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Let's Connect
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -540,8 +688,48 @@
 
 
 
-<h1 id="greeting">Greeting</h1>
-<p>Waddup gang</p>
+<h1 id="welcome-to-my-digital-space">Welcome to My Digital Space</h1>
+<p>Hi there! I'm Petre-Alexandru Hautelman, a Romanian software developer currently living in the Netherlands. This is my corner of the internet where I share knowledge, explore ideas, and showcase the projects that keep me excited about the ever-evolving world of tech.</p>
+<h2 id="about-me">About Me</h2>
+<p>I'm currently pursuing my <strong>MSc in Artificial Intelligence Technology</strong> at TU Delft (2023 - Present), building upon my <strong>BSc in Computer Science and Engineering</strong> from the same institution (2019 - 2023, 7.58 GPA). My academic journey has taken me through fascinating territories including big data processing, computational intelligence, quantum information, and collaborative AI.</p>
+<p>During my bachelor's, I conducted research on <strong>"An empirical analysis of entropy search in batch bayesian optimisation"</strong> - a project that deepened my appreciation for the intersection of theory and practical application in machine learning optimization.</p>
+<p>Professionally, I work as a <strong>Software Developer at Kinaxis</strong> in Rotterdam, where I'm part of a dynamic team designing and optimizing software solutions for supply chain management, logistics, and transportation. My daily toolkit includes Java Spring, SQL, and modern web technologies, all while embracing agile methodologies and test-driven development practices.</p>
+<h2 id="what-drives-me">What Drives Me</h2>
+<p>I'm passionate about <strong>algorithmics and data science</strong>, always seeking that perfect balance between elegant code and impactful results. As a curious perfectionist, I thrive in collaborative environments where innovative solutions meet real-world challenges. My appetite for learning is insatiable - there's always a new technology to explore, a better approach to discover, or an optimization to uncover.</p>
+<p>Nothing makes me happier than seeing people developing best quality software and witnessing others use software that enhances their power, productivity, and life enjoyment. This belief drives me to advocate for and develop <strong>open-source software</strong> whenever possible - because I believe great tools should be accessible to everyone.</p>
+<p>I'm on a mission to <strong>make state-of-the-art AI available to everyone</strong> - both developers and non-technical users alike. Technology should empower, not exclude, and I'm committed to building bridges that make cutting-edge AI tools accessible and usable for people from all backgrounds.</p>
+<h2 id="what-youll-find-here">What You'll Find Here</h2>
+<p>This website is my knowledge-sharing hub and creative playground. Whether you're a fellow developer, a student, or just someone curious about technology, you'll discover:</p>
+<p><strong>📚 Tutorials &amp; Guides</strong></p>
+<ul>
+<li>OpenWebUI tutorials to help you navigate and leverage this powerful platform</li>
+<li>Best software practices that I've learned through experience and continuous learning</li>
+<li>Framework tutorials covering the tools and technologies I work with daily</li>
+</ul>
+<p><strong>💭 Story Blogs</strong></p>
+<ul>
+<li>My thoughts and opinions on the latest tech trends</li>
+<li>Insights from my professional and academic journey</li>
+<li>Reflections on the challenges and breakthroughs in AI and software development</li>
+</ul>
+<p><strong>🚀 Personal Projects</strong></p>
+<ul>
+<li>Random experiments and side projects I tinker with in my free time</li>
+<li>Code snippets and solutions to interesting problems</li>
+<li>Explorations into new technologies and concepts</li>
+</ul>
+<h2 id="lets-connect">Let's Connect</h2>
+<p>I believe the best learning happens through sharing and collaboration. Feel free to explore the content, dive into the tutorials, read my thoughts, or check out my projects. If something sparks your interest, if you have questions, or if you'd like to discuss a potential collaboration, don't hesitate to reach out.</p>
+<p><strong>Find me on:</strong></p>
+<ul>
+<li>📧 <strong>Email:</strong> <a href="mailto:hautel.alex2000@gmail.com">hautel.alex2000@gmail.com</a></li>
+<li>💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/petre-alexandru-hautelman-43468518a/">linkedin.com/in/petre-alexandru-hautelman</a></li>
+<li>🐙 <strong>GitHub:</strong> <a href="https://github.com/pahautelman">github.com/pahautelman</a></li>
+<li>🔮 <strong>Medium</strong> <a href="https://medium.com/@hautel.alex2000">medium.com/@hautel.alex2000</a></li>
+</ul>
+<p>Whether you're here to learn something new, find a solution to a problem, or simply satisfy your curiosity about technology, I hope you find value in what I've shared. Welcome to my digital journey - let's explore the fascinating world of technology together!</p>
+<hr />
+<p><em>Happy coding, and thanks for stopping by!</em> 🚀</p>
 
 
 

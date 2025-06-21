@@ -26,6 +26,9 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
       
 
 
@@ -62,7 +65,14 @@
     body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -113,6 +123,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -381,36 +417,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-single-document-upload-quick-simple" class="md-nav__link">
+  <a href="#single-document-upload-quick-simple" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Single Document Upload (Quick &amp; Simple)
+      Single Document Upload (Quick &amp; Simple)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-web-information-retrieval" class="md-nav__link">
+  <a href="#web-information-retrieval" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Web Information Retrieval
+      Web Information Retrieval
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-knowledge-collections-comprehensive" class="md-nav__link">
+  <a href="#knowledge-collections-comprehensive" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Knowledge Collections (Comprehensive)
+      Knowledge Collections (Comprehensive)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-dedicated-knowledge-enabled-models" class="md-nav__link">
+  <a href="#dedicated-knowledge-enabled-models" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Dedicated Knowledge-Enabled Models
+      Dedicated Knowledge-Enabled Models
     </span>
   </a>
   
@@ -501,9 +537,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#data-cleaning-and-preparation-techniques" class="md-nav__link">
+  <a href="#web-scraping-optimization" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Cleaning and Preparation Techniques
+      Web Scraping Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Normalization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Granularity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Enhancement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-powered-curation" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI-Powered Curation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Format
     </span>
   </a>
   
@@ -899,36 +980,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-single-document-upload-quick-simple" class="md-nav__link">
+  <a href="#single-document-upload-quick-simple" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Single Document Upload (Quick &amp; Simple)
+      Single Document Upload (Quick &amp; Simple)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-web-information-retrieval" class="md-nav__link">
+  <a href="#web-information-retrieval" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Web Information Retrieval
+      Web Information Retrieval
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-knowledge-collections-comprehensive" class="md-nav__link">
+  <a href="#knowledge-collections-comprehensive" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Knowledge Collections (Comprehensive)
+      Knowledge Collections (Comprehensive)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-dedicated-knowledge-enabled-models" class="md-nav__link">
+  <a href="#dedicated-knowledge-enabled-models" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Dedicated Knowledge-Enabled Models
+      Dedicated Knowledge-Enabled Models
     </span>
   </a>
   
@@ -1019,9 +1100,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#data-cleaning-and-preparation-techniques" class="md-nav__link">
+  <a href="#web-scraping-optimization" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Cleaning and Preparation Techniques
+      Web Scraping Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Normalization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Granularity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Enhancement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-powered-curation" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI-Powered Curation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Format
     </span>
   </a>
   
@@ -1159,7 +1285,6 @@
 <h1 id="open-webui-tutorial-supercharge-your-local-ai-with-rag-and-custom-knowledge-bases">Open WebUI tutorial. Supercharge Your Local AI with RAG and Custom Knowledge Bases</h1>
 <p>In this second part of our local AI series, we’ll dive into <em>Retrieval-Augmented Generation (RAG)</em>, showing you how to dramatically improve your AI’s capabilities by connecting it to your own documents and knowledge sources. By the end, you’ll have an AI that can answer questions based on private data without sending anything to external servers.</p>
 <p><a class="glightbox" href="../rag-preview.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../rag-preview.gif" /></a></p>
-<p><br /></p>
 <h2 id="introduction">Introduction</h2>
 <p>In Part One, we set up a robust local AI environment with Ollama and Open WebUI, giving you a completely private, subscription-free alternative to commercial AI services. Today, we’re taking this setup to the next level.</p>
 <p>While large language models (LLMs) are impressive, they come with two significant limitations:</p>
@@ -1176,7 +1301,6 @@
 <li>General tips and tricks for achieving the best results with your Open WebUI application.</li>
 </ul>
 <p>Let’s transform your local AI from a general-purpose assistant into a specialized knowledge worker tailored to your specific needs.</p>
-<p><br /></p>
 <h2 id="what-is-rag-and-why-should-you-care">What is RAG and Why Should You Care?</h2>
 <figure>
     <a class="glightbox" href="../rag-visualized.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../rag-visualized.webp" /></a>
@@ -1207,10 +1331,9 @@
 <li>The system finds the most similar document vectors to your question vector</li>
 </ol>
 <p>This vector-based approach allows the system to retrieve information based on meaning, not just keyword matching.</p>
-<p><br /></p>
 <h2 id="rag-options-in-open-webui">RAG Options in Open WebUI</h2>
 <p>Open WebUI offers several ways to implement RAG without writing a single line of code. Let’s explore each approach:</p>
-<h3 id="1-single-document-upload-quick-simple">1. Single Document Upload (Quick &amp; Simple)</h3>
+<h3 id="single-document-upload-quick-simple">Single Document Upload (Quick &amp; Simple)</h3>
 <p><em>The most straightforward approach is uploading a document directly to the chat interface.</em></p>
 <p><strong>How to do it:</strong></p>
 <ol>
@@ -1221,7 +1344,7 @@
 </ol>
 <p><a class="glightbox" href="../openwebui-upload.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-upload.webp" /></a></p>
 <p><strong>Best for:</strong> Quick, one-off questions about a specific document.</p>
-<h3 id="2-web-information-retrieval">2. Web Information Retrieval</h3>
+<h3 id="web-information-retrieval">Web Information Retrieval</h3>
 <p><em>Need information from a specific webpage?</em></p>
 <p><strong>How to do it:</strong></p>
 <ol>
@@ -1232,7 +1355,7 @@
 <p><strong>Example</strong>: <code>#https://yourcompany.com/blog/latest-product what features were announced?</code></p>
 <p><a class="glightbox" href="../openwebui-url.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../openwebui-url.webp" /></a></p>
 <p><strong>Best for</strong>: Getting information from specific online sources without manual copying</p>
-<h3 id="3-knowledge-collections-comprehensive">3. Knowledge Collections (Comprehensive)</h3>
+<h3 id="knowledge-collections-comprehensive">Knowledge Collections (Comprehensive)</h3>
 <p><em>For more permanent knowledge bases.</em></p>
 <p><strong>How to do it:</strong></p>
 <ol>
@@ -1248,7 +1371,7 @@
 </ol>
 <p><a class="glightbox" href="../custom-knowledge.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../custom-knowledge.gif" /></a></p>
 <p><strong>Best for</strong>: Building permanent knowledge bases from multiple documents</p>
-<h3 id="4-dedicated-knowledge-enabled-models">4. Dedicated Knowledge-Enabled Models</h3>
+<h3 id="dedicated-knowledge-enabled-models">Dedicated Knowledge-Enabled Models</h3>
 <p><em>The most powerful approach</em>.</p>
 <p><strong>How to do it:</strong></p>
 <ol>
@@ -1258,13 +1381,12 @@
 <li>Use this model for all questions related to that knowledge domain</li>
 </ol>
 <p><strong>Best for</strong>: Creating specialized assistants for specific knowledge domains.</p>
-<p><br /></p>
 <h2 id="optimizing-your-rag-system">Optimizing Your RAG System</h2>
 <p>Let’s make your RAG system faster and more accurate by tweaking some settings:</p>
 <p>Go to ‘Settings &gt; Admin Settings &gt; Documents’</p>
 <p><a class="glightbox" href="../rag-settings.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../rag-settings.gif" /></a></p>
 <p>Here are the key settings to consider:</p>
-<h4 id="text-splitter">Text Splitter</h4>
+<h3 id="text-splitter">Text Splitter</h3>
 <p>Open WebUI offers two methods for splitting (or chunking) the files:</p>
 <ul>
 <li><strong>Character Chunking</strong>: Splits text based on character count.</li>
@@ -1284,7 +1406,7 @@
 <p>For comparison, <strong>500 tokens</strong> are roughly <strong>375 words</strong> or about <strong>two paragraphs of text</strong>, though this can vary based on content density and AI model.</p>
 <p><strong>About Chunk Overlap</strong>:</p>
 <p>This setting allows consecutive chunks to share some content, preventing loss of meaning when text is split. A good starting point is <strong>10–20% overlap</strong> to ensure smooth continuity.</p>
-<h4 id="embedding-models">Embedding Models</h4>
+<h3 id="embedding-models">Embedding Models</h3>
 <p>Embedding models convert text into numerical representations that help find similar content. In Open WebUI, you can select different embedding models:</p>
 <ul>
 <li><strong>Pro tip</strong>: For RAG, using a small, fast model for embeddings is critical since it will process large amounts of text. The <a href="https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0">Snowflake/snowflake-arctic-embed-l-v2.0</a> model offers excellent performance at only ~500M parameters.</li>
@@ -1297,7 +1419,7 @@
     Use the MTEB leaderboard to find the best retrieval and reranking models.
     </figcaption>
 </figure>
-<h4 id="hybrid-search-with-re-ranking">Hybrid Search with Re-ranking</h4>
+<h3 id="hybrid-search-with-re-ranking">Hybrid Search with Re-ranking</h3>
 <p><strong>Highly Recommended:</strong> Enable hybrid search with CrossEncoder re-ranking to improve the relevance of retrieved documents.</p>
 <p><strong>How re-ranking works in the RAG pipeline:</strong></p>
 <ol>
@@ -1306,14 +1428,14 @@
 <li>The most relevant chunks (after re-ranking) are sent to the LLM</li>
 </ol>
 <p>This two-stage approach significantly improves the quality of retrieved information by filtering out false positives from the initial retrieval stage.</p>
-<h4 id="top-k-number-of-retrieved-documents">Top K: Number of Retrieved Documents</h4>
+<h3 id="top-k-number-of-retrieved-documents">Top K: Number of Retrieved Documents</h3>
 <p>The <strong>Top K</strong> setting controls how many document chunks are retrieved for each query. This directly impacts the quality of responses by determining how much context is provided to the model. A greater value will help answer complex user queries that discuss multiple concepts.</p>
 <blockquote>
 <p><em><strong>Pro Tip</strong>: The chunk size and number of retrieved documents matter! The formula (chunk_token_size × num_retrieved_documents) should not exceed half of your LLM model’s context window to leave room for the actual conversation.</em></p>
 </blockquote>
-<h4 id="relevance-threshold">Relevance Threshold</h4>
+<h3 id="relevance-threshold">Relevance Threshold</h3>
 <p>Adjust this to control how strict the system is when determining if a document section is relevant to a query. Lower values retrieve more (potentially less relevant) content; higher values are more selective. A threshold <strong>between 0.1 and 0.2</strong> works well for most use cases, balancing recall and precision.</p>
-<h4 id="cloud-storage-integration">Cloud Storage Integration</h4>
+<h3 id="cloud-storage-integration">Cloud Storage Integration</h3>
 <p>Connect Google Drive or OneDrive to expand your knowledge sources (great for teams already using these platforms).</p>
 <figure>
     <a class="glightbox" href="../my-rag-settings.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../my-rag-settings.webp" /></a>
@@ -1321,40 +1443,42 @@
     My RAG settings
     </figcaption>
 </figure>
-<p><br /></p>
 <h2 id="data-processing-for-knowledge-base-creation">Data Processing for Knowledge Base Creation</h2>
 <p>Before uploading documents to your RAG system, performing comprehensive data processing is crucial. This step significantly improves the quality and effectiveness of your knowledge base. Here are key strategies for preparing your data:</p>
-<h4 id="data-cleaning-and-preparation-techniques">Data Cleaning and Preparation Techniques</h4>
-<p><strong>Web Scraping Optimization</strong>: When collecting data from the web, focus on removing unnecessary elements:</p>
+<h3 id="web-scraping-optimization">Web Scraping Optimization</h3>
+<p>When collecting data from the web, focus on removing unnecessary elements:</p>
 <ul>
 <li>Strip out navigation menus, headers, footers, and sidebars</li>
 <li>Remove duplicate text blocks</li>
 <li>Clean up formatting inconsistencies</li>
 </ul>
-<p><strong>Content Normalization</strong></p>
+<h3 id="content-normalization">Content Normalization</h3>
 <ul>
 <li>Replace images with descriptive alt text or image descriptions</li>
 <li>Standardize text formatting (consistent headings, paragraphs)</li>
 </ul>
-<p><strong>Document Granularity</strong>: Break down large documents into focused, atomic units:</p>
+<h3 id="document-granularity">Document Granularity</h3>
+<p>Break down large documents into focused, atomic units:</p>
 <ul>
 <li>Each document should answer one specific user question</li>
 <li>Create smaller, more targeted documents that are easier to retrieve</li>
 </ul>
-<p><strong>Content Enhancement</strong></p>
+<h3 id="content-enhancement">Content Enhancement</h3>
 <ul>
 <li>Summarize complex passages to improve readability</li>
 <li>Rewrite content to improve clarity and conciseness</li>
 <li>Add metadata to each document (e.g., source URL, timestamp of retrieval, relevant tags or categories, author, etc.)</li>
 </ul>
-<p><strong>AI-Powered Curation</strong>: Leverage AI models for advanced data processing:</p>
+<h3 id="ai-powered-curation">AI-Powered Curation</h3>
+<p>Leverage AI models for advanced data processing:</p>
 <ul>
 <li>Use a performant general-purpose AI to review and refine document collections</li>
 <li>Verify information accuracy</li>
 <li>Detect and remove redundant or low-quality content</li>
 <li>Suggest additional metadata or tags</li>
 </ul>
-<p><strong>Storage Format:</strong> Consider using a knowledge management system like Obsidian, which offers:</p>
+<h3 id="storage-format">Storage Format</h3>
+<p>Consider using a knowledge management system like Obsidian, which offers:</p>
 <ul>
 <li>Mind-map style note organization</li>
 <li>Single-topic focus for each document</li>
@@ -1364,7 +1488,6 @@
 <blockquote>
 <p><em><strong>Pro Tip:</strong> Refer to my <a href="https://github.com/pahautelman/Obsidian-Text-Transformer-LocalAI">GitHub repository</a> for a comprehensive document-processing AI pipeline that automates these steps.</em></p>
 </blockquote>
-<p><br/></p>
 <h2 id="choosing-the-right-model-for-rag">Choosing the Right Model for RAG</h2>
 <p>Not all models are created equal when answering RAG user queries.</p>
 <p><strong>Key Considerations:</strong></p>
@@ -1378,7 +1501,6 @@
 <li>For complex reasoning with RAG: Consider larger models (30B+) but be aware of performance impacts</li>
 <li><em>Always prioritize models with longer context windows when doing RAG.</em></li>
 </ul>
-<p><br/></p>
 <h2 id="creating-the-perfect-system-prompt-for-rag">Creating the Perfect System Prompt for RAG</h2>
 <p>The system prompt is where you tell your AI how to use the retrieved information. Here’s an example prompt for a documentation assistant:</p>
 <pre><code class="language-txt">You are a specialized assistant with deep knowledge of Open WebUI, an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.
@@ -1407,7 +1529,6 @@ Remember that your answers should prioritize accuracy over completeness—it's b
 <li>Tone and interaction style guidance</li>
 <li>If the model uses RAG as a tool-calling function, instruct it to request clarifications when encountering ambiguous queries before executing RAG. This ensures that the retrieved documents accurately address the user’s query.</li>
 </ul>
-<p><br/></p>
 <h2 id="real-world-rag-examples">Real-World RAG Examples</h2>
 <p>Now, let’s see RAG in action with two practical examples. All data and code used in these examples can be found in the linked GitHub repositories.</p>
 <h3 id="example-1-wikipedia-knowledge-base">Example 1: Wikipedia Knowledge Base</h3>
@@ -1450,7 +1571,7 @@ Remember that your answers should prioritize accuracy over completeness—it's b
 </figure></p>
 </li>
 </ul>
-<p><em>The result is nothing short of </em><em>remarkable!</em>** Our carefully configured RAG system found the passage that directly addresses the historical transition of Arundel House in a corpus of over 40,000 Wikipedia articles.</p>
+<p><em>The result is nothing short of remarkable!</em> Our carefully configured RAG system found the passage that directly addresses the historical transition of Arundel House in a corpus of over 40,000 Wikipedia articles.</p>
 <p>This isn’t just search; it’s intelligent information retrieval. Our RAG configuration — with its <strong>token-based chunking, relevance threshold, and hybrid search</strong> — perfectly worked to:</p>
 <ul>
 <li><strong>Process</strong> and <strong>save</strong> the knowledge base</li>
@@ -1523,7 +1644,6 @@ Remember that your answers should prioritize accuracy over completeness. It's be
 <blockquote>
 <p><em><strong>Pro Tip:</strong> This approach can easily be adapted for company internal documentation, technical manuals, or customer support knowledge bases.</em></p>
 </blockquote>
-<p><br/></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>By implementing RAG with Open WebUI, you’ve transformed your local AI from a general chatbot into a specialized assistant with access to your private knowledge. This setup offers several advantages:</p>
 <ul>
