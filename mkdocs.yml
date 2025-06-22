@@ -8,6 +8,7 @@ nav:
       - Beyond Text. Equipping Your Open WebUI AI with Action Tools: tutorials/open-webui-action-tools/open-webui-action-tools.md
     - Software:
       - Effective Software Testing: tutorials/effective-software-testing.md
+      - Java Reactive Programming Walkthrough - Project Reactor: tutorials/java-reactive/java-reactive.md
   - Software Tools:
     - MC/DC Calculator: https://pahautelman.github.io/mcdc-calculator/
     - Interactive Fish Cluster: https://pahautelman.github.io/interactive-fish-cluser/
