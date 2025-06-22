@@ -1,0 +1,1343 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../effective-software-testing/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Java Reactive Programming Walkthrough - Project Reactor - phautelman</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#java-reactive-programming-walkthrough-project-reactor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="phautelman" class="md-header__button md-logo" aria-label="phautelman" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            phautelman
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Java Reactive Programming Walkthrough - Project Reactor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="phautelman" class="md-nav__button md-logo" aria-label="phautelman" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    phautelman
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Open WebUI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Open WebUI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-your-local-ai/build-your-local-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build Your Local AI. From Zero to a Custom ChatGPT Interface with Ollama & Open WebUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../open-webui-rag/open-webui-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supercharge Your Local AI with RAG and Custom Knowledge Bases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../open-webui-action-tools/open-webui-action-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Beyond Text. Equipping Your Open WebUI AI with Action Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../effective-software-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Effective Software Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Java Reactive Programming Walkthrough - Project Reactor
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java Reactive Programming Walkthrough - Project Reactor
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understand-the-default-blocking-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understand the Default Blocking Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-reactive-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Reactive Programming?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is Reactive Programming?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#real-world-analogy-blocking-vs-reactive-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-world analogy: Blocking vs Reactive Programming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async-alternatives-futures-vs-reactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Async Alternatives: Futures vs Reactor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reactive-programming-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reactive Programming in Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reactive Programming in Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conveyor-belt-analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conveyor Belt Analogy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subscribers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-decipher-reactor-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Decipher Reactor documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns-and-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns and Pitfalls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns and Pitfalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscription" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subscription
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocking-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blocking calls
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reactive-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reactive Spring Boot
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Software Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pahautelman.github.io/mcdc-calculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MC/DC Calculator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://pahautelman.github.io/interactive-fish-cluser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interactive Fish Cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understand-the-default-blocking-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understand the Default Blocking Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-reactive-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Reactive Programming?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is Reactive Programming?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#real-world-analogy-blocking-vs-reactive-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-world analogy: Blocking vs Reactive Programming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async-alternatives-futures-vs-reactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Async Alternatives: Futures vs Reactor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reactive-programming-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reactive Programming in Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reactive Programming in Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conveyor-belt-analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conveyor Belt Analogy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subscribers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-decipher-reactor-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Decipher Reactor documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-patterns-and-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns and Pitfalls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Patterns and Pitfalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscription" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subscription
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocking-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blocking calls
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reactive-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reactive Spring Boot
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="java-reactive-programming-walkthrough-project-reactor">Java Reactive Programming Walkthrough -- Project Reactor</h1>
+<p>Reactive programming offers a paradigm shift for handling data flows and concurrency. This tutorial explores its core concepts, benefits, and implementation using Project Reactor and Spring Boot.</p>
+<p><strong>Sources:</strong></p>
+<ul>
+<li><a href="https://projectreactor.io/learn">Project Reactor</a></li>
+<li><a href="https://www.youtube.com/watch?v=EExlnnq5Grs&amp;list=PLqq-6Pq4lTTYPR2oH7kgElMYZhJd4vOGI">Java Brains -- Reactive programming with Java</a></li>
+</ul>
+<!-- Content:
+Content:
+Understand the Default Blocking Model
+What is Reactive Programming?
+Real-world analogy: Blocking vs Reactive Programming  
+Async Alternatives: Futures vs Reactor
+Reactive Programming in Java
+Core concepts
+Conveyor Belt Analogy
+Publishers
+Subscribers
+Operators
+How to Decipher Reactor documentation
+Common Patterns and Pitfalls
+Error Handling
+Timeouts
+Subscription
+Blocking calls
+Exercices
+Reactive Spring Boot -->
+
+<h2 id="understand-the-default-blocking-model">Understand the Default Blocking Model</h2>
+<p>Java's default blocking model processes requests sequentially, where each operation blocks the thread until completion. While simple, it has significant drawbacks for modern applications, especially in microservices architectures:</p>
+<ul>
+<li><strong>Inefficient for High Concurrency</strong>:Blocking threads during I/O operations (e.g., waiting for service or database responses) leads to resource underutilisation.</li>
+<li><strong>Not Optimized for Microservices</strong>: Microservices often involve multiple dependent calls between services. A blocking model introduces cumulative delays, increasing latency and degrading performance for latency-sensitive applications.</li>
+<li><strong>Increased Cloud Costs</strong>: In cloud-hosted environments, idle threads waiting on I/O waste resources, leading to higher infrastructure costs under heavy workloads.
+Modern demands for scalability, responsiveness, and cost-efficiency highlight the need for non-blocking, asynchronous paradigms better suited for microservices and cloud-native applications.</li>
+</ul>
+<h2 id="what-is-reactive-programming">What is Reactive Programming?</h2>
+<p>Reactive programming is a declarative programming paradigm focused on data streams and change propagation. Instead of specifying <em>how to perform tasks</em>, developers define <em>what should happen when data becomes available</em>. </p>
+<p><strong>Key Characteristics:</strong></p>
+<ul>
+<li><strong>Asynchronous Execution:</strong> Tasks like I/O operations run in the background, freeing threads to handle other requests</li>
+<li><strong>Non-Blocking:</strong> Threads avoid waiting for slow operations to complete</li>
+<li><strong>Efficient Resource Use:</strong> Fewer threads manage more requests, reducing overhead.</li>
+</ul>
+<p>Classical uses of reactive programming include Graphical User Interfaces (web or browser apps) where the system reacts to user events, and real-time data streams (e.g., sensor data,  stock markets, real-time messaging) where data is communicated continuously between systems.</p>
+<h3 id="real-world-analogy-blocking-vs-reactive-programming">Real-world analogy: Blocking vs Reactive Programming</h3>
+<p>Imagine you are managing a to-do list for your online shop, which includes the following tasks: </p>
+<ul>
+<li>Pick up clothes (takes 10 minutes)</li>
+<li>Prepare packaging boxes (10 minutes)</li>
+<li>Print delivery labels (10 minutes)</li>
+<li>Finish packaging (10 minutes)</li>
+<li>Drop off to the carrier (5 minutes)</li>
+</ul>
+<p>A sequential approach takes 45 minutes. Reactive programming delegates available tasks to multiple workers, completing them in parallel and reducing total time. For example:</p>
+<ul>
+<li>Person 1 picks up clothes</li>
+<li>Person 2 prepares the packaging boxes</li>
+<li>Person 3 prints labels</li>
+<li>When all three tasks are done, the packages are finished are dropped to carrier. </li>
+</ul>
+<p>The total time in this case is <em>25 minutes</em>.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3sGHTtYoW-Y?si=xNR-9XKOKFv3a_xo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h3 id="async-alternatives-futures-vs-reactor">Async Alternatives: Futures vs Reactor</h3>
+<p>Before Project Reactor, Java offered <code>CompletableFutures</code> for asynchronous workflows:</p>
+<pre><code class="language-java">// CompletableFutures implementation
+public User getUser(String userId) {
+    // Fetch user data asynchronously
+    CompletableFuture&lt;User&gt; userAsync = CompletableFuture.supplyAsync(() -&gt; userService.getUser(userId));
+    // Fetch user preferences asynchronously
+    CompletableFuture&lt;Preferences&gt; prefsAsync = CompletableFuture.supplyAsync(() -&gt; userPreferencesService.getPreferences(userId));
+
+    // Wait for both asynchronous operations to complete
+    CompletableFuture&lt;Void&gt; bothFutures = CompletableFutures.allOf(userAsync, prefsAsync);
+    bothFutures.join();
+
+    // Retrieve the results of the completed asynchronous operations. Blocks main thread
+    User user = userAsync.join();
+    Preferences prefs = prefsAsync.join();
+    user.setUserPreferences(prefs);
+
+    return user;
+}
+</code></pre>
+<p>vs</p>
+<pre><code class="language-java">// Project Reactor
+public Mono&lt;User&gt; getUser(String userId) {
+    return userService.getUser(userId)                            // Fetch the User object reactively
+        .zipWith(userPreferencesService.getPreferences(userId)    // Combine the result of fetching the User with the User Preferences
+        .map(tuple -&gt; {                                           // when both calls are done, perform transformation of result
+            User user = tuple.getT1();
+            user.setPreferences(tuple.getT2());
+            return user;
+        });                                                       // return a single asynchronous computation that emit a User once completed.
+                                                                  // Doesn't block the main thread at all
+}
+</code></pre>
+<p>Chaining multiple <code>CompletableFuture</code> calls can be functional but often becomes verbose and prone to errors. In contrast, Project Reactor provides a framework for making asynchronous calls that features a simpler syntax. It includes several reusable and familiar functions that can be combined in powerful ways. Additionally, it offers increased control over data streams and maintains a non-blocking nature.</p>
+<h2 id="reactive-programming-in-java">Reactive Programming in Java</h2>
+<h3 id="core-concepts">Core concepts</h3>
+<p>Traditional patterns handle data flow in two ways:</p>
+<ul>
+<li><strong>Iterator (Pull)</strong>: Consumers controls data flow, explicitly requesting each item sequentially (e.g., Iterator.next())</li>
+<li><strong>Observe (Push):</strong> Producer drives flow, publishing data to consumers (e.g., event listeners)</li>
+</ul>
+<p>Reactor combines both approaches through a Publisher-Subscriber model with back-pressure. The core abstractions are:</p>
+<ul>
+<li><strong>Publisher:</strong> Emits data sequences when available (Flux / Mono)</li>
+<li><strong>Subscriber:</strong>  Consumes data with back-pressure control (e.g., request 10 items at a time)</li>
+<li><strong>Subscription:</strong> Controls flow rate between Publisher and Subscriber</li>
+</ul>
+<h3 id="conveyor-belt-analogy">Conveyor Belt Analogy</h3>
+<p>To better understand the Reactive abstractions, it is useful to think of a smart conveyor belt line:</p>
+<ul>
+<li>Publisher = Places items (data) on the belt.</li>
+<li>Subscriber = Worker processing items at their pace</li>
+<li>Subscription =  Conveyor belt with adjustable speed</li>
+<li>Back-pressure = Worker's "<em>slow down!</em>" signal</li>
+</ul>
+<pre><code class="language-java">// Production line processing 100 items
+Flux.range(1, 100).delayElements(Duration.ofMillis(100L)         // Start production
+    .map(item -&gt; processItem(item))                              // Transform items
+    .bufferTimeout(10, Duration.ofSeconds(1))                    // Batch processing
+    .flatMap(batch -&gt; {
+        return Flux.fromIterable(batch)
+            .parallel()                                          // Multiple workers
+            .runOn(Schedulers.boundedElastic())                  // Worker threads
+            .doOnNext(item -&gt; workOnItem(item));
+    })
+    .subscribe(
+        item -&gt; recordCompletion(item),                          // Success handling
+        error -&gt; handleError(error),                             // Error handling
+        () -&gt; shutdownLine()                                     // Completion handling
+    );
+
+</code></pre>
+<h3 id="publishers">Publishers</h3>
+<p>The <code>Publisher&lt;T&gt;</code> interface is the foundation of reactive streams. It declares a single method</p>
+<pre><code class="language-java">void subscribe(Subscriber&lt;? super T&gt; subscriber);
+</code></pre>
+<p>This binds a Publisher to a Subscriber, <strong>initiating the data flow.</strong></p>
+<p>Project Reactor provides two Publisher implementations:</p>
+<ul>
+<li><code>Mono&lt;T&gt;</code>: Emits <strong>0 or 1 item</strong>, followed by <code>onComplete</code> or <code>onError</code> events</li>
+</ul>
+<pre><code class="language-java">Mono&lt;String&gt; singleItem = Mono.just(&quot;Hello&quot;); 
+Mono&lt;String&gt; empty = Mono.empty(); 
+Mono&lt;String&gt; error = Mono.error(new RuntimeException());
+</code></pre>
+<ul>
+<li><code>Flux&lt;T&gt;</code>: Emits <strong>0 to N items</strong> followed by <code>onComplete</code>/<code>onError</code></li>
+</ul>
+<pre><code class="language-java">Flux&lt;?&gt; unresponsive = Flux.never();
+Flux&lt;String&gt; letters = Flux.just(&quot;A&quot;, &quot;B&quot;);
+Flux&lt;Integer&gt; numbers = Flux.range(1, 5); 
+Flux&lt;String&gt; fromCollection = Flux.fromIterable(List.of(&quot;A&quot;, &quot;B&quot;)); 
+Flux&lt;?&gt; fromGenerator = Flux.generate(() -&gt; 0, (state, sink) -&gt; { ... })
+Flux&lt;Long&gt; interval = Flux.interval(Duration.ofSeconds(1));
+</code></pre>
+<p>Types of emitted events:</p>
+<ul>
+<li><code>onNext</code>: Delivers an item to the Subscriber.</li>
+<li><code>onComplete</code>: Signals successful stream completion.</li>
+<li><code>onError</code>: Signals failure (by default, the <code>Subscriber</code> stops listening to <code>Publisher</code>, but this behaviour can be overwritten)</li>
+</ul>
+<h3 id="subscribers">Subscribers</h3>
+<p>The <code>Subscriber&lt;T&gt;</code> interface defines methods to react to events:</p>
+<pre><code class="language-java">void onSubscribe(Subscription s); 
+void onNext(T item); 
+void onError(Throwable t); 
+void onComplete();
+</code></pre>
+<p>The <code>Subscription</code> interface controls back-pressure and cancellation:</p>
+<pre><code class="language-java">void request(long n);  // Ask for `n` items  
+void cancel();         // Stop receiving data  
+</code></pre>
+<p><code>BaseSubscriber&lt;T&gt;</code> is a helper class simplifying custom <code>Subscriber</code> implementations. Override lifecycle hooks:</p>
+<ul>
+<li><code>hookOnSubscribe(Subscription)</code>: Called on subscription (for example, to initialize back-pressure)  </li>
+<li><code>hookOnNext(T)</code>: Process an item</li>
+<li><code>hookOnError(Throwable)</code>: Handle errors</li>
+<li><code>hookOnComplete()</code>: Clean up after completion</li>
+</ul>
+<p>Example: Batched Processing</p>
+<pre><code class="language-java">public class BatchSubscriber&lt;T&gt; extends BaseSubscriber&lt;T&gt; { 
+    private final int batchSize; 
+    private List&lt;T&gt; buffer = new ArrayList&lt;&gt;(); 
+
+    public BatchSubscriber(int batchSize) { 
+        this.batchSize = batchSize; 
+    } 
+
+    @Override 
+    protected void hookOnSubscribe(Subscription subscription) { 
+        // Request first batch 
+        request(batchSize); 
+    } 
+
+    @Override 
+    protected void hookOnNext(T value) { 
+        buffer.add(value); 
+        if (buffer.size() &gt;= batchSize) { 
+            processBatch(buffer); 
+            buffer.clear(); 
+            request(batchSize);  // Request next batch 
+        } 
+    } 
+
+    private void processBatch(List&lt;T&gt; batch) { 
+        // Custom logic (e.g., save to database) 
+    } 
+} 
+
+// Usage 
+Flux.range(1, 100).subscribeWith(new BatchSubscriber&lt;&gt;(10));
+</code></pre>
+<p><code>Subscription</code> control:</p>
+<ul>
+<li><code>request(n)</code>: Adjusts back-pressure (e.g., request 10 items at a time)</li>
+<li><code>cancel()</code>: Stops the stream (e.g., user aborts operation)</li>
+<li><code>dispose()</code> (Reactor specific): Releases resources when the steam ends.</li>
+</ul>
+<h3 id="operators">Operators</h3>
+<p>Reactor's operators mirror Java Streams but work asynchronously:</p>
+<pre><code class="language-java">// Java Stream (synchronous) 
+List&lt;Integer&gt; evenNumbers = IntStream.range(1, 10) 
+    .filter(n -&gt; n % 2 == 0) 
+    .map(n -&gt; n * n)
+    .forEach(System.out::println); 
+
+// Reactor (asynchronous) 
+Flux.range(1, 10) 
+    .filter(n -&gt; n % 2 == 0)
+    .map(n -&gt; n * n) 
+    .subscribe(System.out::println);
+</code></pre>
+<p>Notable operators that facilitate the manipulation and transformation of reactive streams:</p>
+<ul>
+<li><code>subscribe</code>: Initiates the subscription to a <code>Mono</code> or <code>Flux</code>, triggering the flow of data. It can accept various parameters, such as consumers for <code>onNext</code>, <code>onError</code>, and <code>onComplete</code> signals, as well as an <code>onSubscribe</code> consumer. <strong>This operator is essential for starting the reactive stream processing.</strong></li>
+<li><code>map</code>: Transforms each element of the sequence by applying a synchronous function, similar to <code>Stream.map</code></li>
+<li><code>flatMap</code>: Transforms each element into a Publisher and flattens these into a single sequence, akin to <code>Stream.flatMap</code></li>
+<li><code>filter</code>: Selects elements that match a given predicate, equivalent to <code>Stream.filter</code></li>
+<li><code>reduce</code>: Combines elements sequentially to produce a single result, comparable to <code>Stream.reduce</code></li>
+<li><code>collect</code>: Accumulates elements into a collection or other mutable container, similar to <code>Stream.collect</code></li>
+<li><code>buffer</code>: Collects emitted items into a collection (e.g., <code>List</code>) and emits these collections as <code>Flux&lt;List&lt;T&gt;&gt;</code>. This is useful for batching items before processing. For example, <code>buffer(5)</code> collects items into lists of 5</li>
+<li><code>distinct</code>: Suppresses duplicate elements, analogous to <code>Stream.distinct</code></li>
+<li><code>sort</code>: Orders elements according to a comparator, comparable to <code>Stream.sorted</code></li>
+<li><code>limit</code>: Restricts the sequence to a specified number of elements, similar to <code>Stream.limit</code></li>
+<li><code>skip</code>: Ignores a specified number of elements in the sequence, akin to <code>Stream.skip</code></li>
+<li><code>any</code>, <code>all</code>: Evaluate whether elements match a given predicate, similar to <code>Stream.anyMatch</code>, <code>Stream.allMatch</code>.</li>
+<li><code>log</code>: Logs various events in the reactive stream, including <code>onSubscribe</code>, <code>onNext</code>, <code>onError</code>, and <code>onComplete</code>. This is particularly useful for debugging and monitoring the flow of data. The log operator integrates with common logging frameworks like <code>Log4J</code> and <code>SLF4J</code></li>
+</ul>
+<h3 id="how-to-decipher-reactor-documentation">How to Decipher Reactor documentation</h3>
+<p>The best way to learn about and understand how operators work in Project Reactor is by reading the official documentation. The page titled "<a href="https://projectreactor.io/docs/core/release/reference/apdx-operatorChoice.html">Which Operator Do I Need?</a>" will guide you through all the operators and explain their use cases.</p>
+<p>Another common challenge is understanding the "marble diagrams" or graphical representations included in the operator's Javadoc. You'll encounter these diagrams frequently while reading the documentation, so it’s important to review the explanation seen below.</p>
+<p><a class="glightbox" href="../marble-diagram.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../marble-diagram.png" /></a></p>
+<h2 id="common-patterns-and-pitfalls">Common Patterns and Pitfalls</h2>
+<h3 id="error-handling">Error Handling</h3>
+<p>Use operators to mange errors gracefully:</p>
+<ul>
+<li><code>onErrorResume</code>: Fallback to an alternative stream</li>
+<li><code>onErrorReturn</code>: Return a default value</li>
+<li><code>doOnError</code>: Log error without affecting the stream</li>
+</ul>
+<h3 id="timeouts">Timeouts</h3>
+<h3 id="subscription">Subscription</h3>
+<p>Always subscribe to start processing. Without subscribe, the conveyor belt is not started, and the data does not flow.</p>
+<h3 id="blocking-calls">Blocking calls</h3>
+<p>Avoid mixing blocking code (e.g., database calls, <code>Thread.sleep</code>) with reactive code. Use dedicated schedulers for blocking operations.</p>
+<h2 id="exercises">Exercises</h2>
+<p>Congratulations on completing this walkthrough! Now it's time to put your knowledge to the test. Please go ahead and solve these exercises designed to help you strengthen your reactive Java skills <a href="https://github.com/pahautelman/reactive-java-workshop">https://github.com/pahautelman/reactive-java-workshop</a>.</p>
+<h2 id="reactive-spring-boot">Reactive Spring Boot</h2>
+<p>Spring WebFlux integrates Project Reactor into Spring Boot, enabling non-blocking REST APIs. Controllers return Mono and Flux, repositories use reactive drivers (e.g., R2DBC for databases)</p>
+<p>The benefits include</p>
+<ul>
+<li><strong>scalability</strong>: Handle more requests with fewer threads, WebFlux can handle 10k+ requests with minimal threads</li>
+<li><strong>responsiveness</strong>: Maintain performance under high load. </li>
+</ul>
+<p>For a reference skeleton on how to set up a reactive Spring Boot project, please visit <a href="https://github.com/pahautelman/reactive-spring-skeleton">https://github.com/pahautelman/reactive-spring-skeleton</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
